@@ -1,0 +1,308 @@
+/* =========================================================
+   ACCESSIBILITY WIDGET — Israeli Standard 5568
+   ========================================================= */
+
+/* --- Widget Toggle Button --- */
+.a11y-widget-btn {
+  position: fixed;
+  bottom: 24px;
+  inset-inline-start: 24px;
+  z-index: 9000;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #b8955a;
+  color: #fff;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  font-family: 'Heebo', Arial, sans-serif;
+  transition: background-color 0.2s, transform 0.2s;
+  line-height: 1.1;
+  text-align: center;
+  padding: 0;
+}
+
+.a11y-widget-btn:hover,
+.a11y-widget-btn:focus-visible {
+  background-color: #9a7a44;
+  transform: scale(1.07);
+}
+
+/* --- Panel --- */
+.a11y-panel {
+  position: fixed;
+  bottom: 88px;
+  inset-inline-start: 24px;
+  z-index: 8999;
+  width: 280px;
+  background-color: #fff;
+  border: 1px solid #e8dfd0;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  font-family: 'Heebo', Arial, sans-serif;
+  direction: rtl;
+  display: none;
+}
+
+.a11y-panel.is-open {
+  display: block;
+}
+
+.a11y-panel-header {
+  background-color: #b8955a;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.a11y-panel-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.a11y-panel-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.a11y-panel-close:hover,
+.a11y-panel-close:focus-visible {
+  background-color: rgba(255,255,255,0.35);
+}
+
+.a11y-controls {
+  padding: 8px 0;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.a11y-control-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  color: #2c2418;
+  font-family: 'Heebo', Arial, sans-serif;
+  background: none;
+  border: none;
+  border-block-end: 1px solid #f3ede4;
+  cursor: pointer;
+  text-align: start;
+  transition: background-color 0.15s;
+}
+
+.a11y-control-btn:hover,
+.a11y-control-btn:focus-visible {
+  background-color: #faf8f4;
+}
+
+.a11y-control-btn.is-active {
+  background-color: #f3ede4;
+  color: #9a7a44;
+  font-weight: 600;
+}
+
+.a11y-control-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #e8dfd0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  transition: background-color 0.15s;
+}
+
+.a11y-control-btn.is-active .a11y-control-icon {
+  background-color: #b8955a;
+  color: #fff;
+}
+
+.a11y-reset-btn {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 8px 16px 12px;
+  padding: 9px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #7a6e5f;
+  background-color: #f3ede4;
+  border: 1px solid #e8dfd0;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: 'Heebo', Arial, sans-serif;
+  transition: background-color 0.15s;
+}
+
+.a11y-reset-btn:hover,
+.a11y-reset-btn:focus-visible {
+  background-color: #e8dfd0;
+  color: #2c2418;
+}
+
+.a11y-panel-footer {
+  padding: 8px 16px 12px;
+  font-size: 0.75rem;
+  color: #7a6e5f;
+  border-block-start: 1px solid #e8dfd0;
+}
+
+/* =========================================================
+   ACCESSIBILITY MODIFIER CLASSES (on <html>)
+   ========================================================= */
+
+/* 1. Large text */
+html.a11y-large-text body {
+  font-size: 1.2rem;
+}
+
+html.a11y-large-text h1 { font-size: 2.5rem; }
+html.a11y-large-text h2 { font-size: 1.875rem; }
+html.a11y-large-text h3 { font-size: 1.5rem; }
+
+@media (min-width: 768px) {
+  html.a11y-large-text h1 { font-size: 3.3rem; }
+  html.a11y-large-text h2 { font-size: 2.4rem; }
+}
+
+/* 2. Readable font */
+html.a11y-readable-font body,
+html.a11y-readable-font h1,
+html.a11y-readable-font h2,
+html.a11y-readable-font h3,
+html.a11y-readable-font h4,
+html.a11y-readable-font .a11y-panel,
+html.a11y-readable-font button,
+html.a11y-readable-font a {
+  font-family: Arial, Helvetica, sans-serif !important;
+  letter-spacing: 0.04em;
+  line-height: 1.85;
+}
+
+/* 3. High contrast */
+html.a11y-high-contrast {
+  --bg:             #000000;
+  --bg-alt:         #1a1a1a;
+  --text:           #ffffff;
+  --text-secondary: #ffff00;
+  --border:         #ffffff;
+  --gold:           #ffff00;
+  --gold-light:     #ffffaa;
+  --card-bg:        #000000;
+  --white:          #000000;
+}
+
+html.a11y-high-contrast .site-footer {
+  background-color: #000;
+  border-block-start: 2px solid #fff;
+}
+
+html.a11y-high-contrast .btn--primary {
+  background-color: #ffff00;
+  color: #000000;
+  border-color: #ffff00;
+}
+
+html.a11y-high-contrast .a11y-widget-btn {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+/* 4. Inverted colors */
+html.a11y-inverted {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+html.a11y-inverted img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* 5. Grayscale */
+html.a11y-grayscale {
+  filter: grayscale(100%);
+}
+
+/* 6. Highlight links */
+html.a11y-highlight-links a {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  outline: 2px solid #000 !important;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* 7. No animations */
+html.a11y-no-animations *,
+html.a11y-no-animations *::before,
+html.a11y-no-animations *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* 8. Large cursor */
+html.a11y-large-cursor,
+html.a11y-large-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M5 5l12 30 4-12 12-4z' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E"), auto !important;
+}
+
+/* 9. Keyboard focus */
+html.a11y-keyboard-focus *:focus {
+  outline: 4px solid #0066cc !important;
+  outline-offset: 3px !important;
+  border-radius: 2px !important;
+}
+
+/* =========================================================
+   ACCESSIBILITY STATEMENT (in-page section)
+   ========================================================= */
+.a11y-statement {
+  background-color: #faf8f4;
+  border: 1px solid #e8dfd0;
+  border-radius: 2px;
+  padding: 24px;
+  max-width: 760px;
+  margin-inline: auto;
+  font-size: 0.875rem;
+  color: #7a6e5f;
+  line-height: 1.75;
+}
+
+.a11y-statement h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c2418;
+  margin-block-end: 8px;
+}
+
+.a11y-statement a {
+  color: #b8955a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

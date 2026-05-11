@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he-IL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="הזמנה לאירוע — עמית עיצובים.">
+  <title>הזמנה לאירוע | עמית עיצובים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@400;600&family=Rubik:wght@400;500&family=Secular+One&family=Noto+Serif+Hebrew:wght@400;700&family=David+Libre:wght@400;700&family=Miriam+Libre:wght@400;700&family=Alef:wght@400;700&family=Suez+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/accessibility.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo" aria-label="עמית עיצובים - דף הבית">
+        <span class="logo-text"><span class="logo-fine">Fine</span><span class="logo-design">Design</span></span>
+      </a>
+      <nav class="nav-desktop" aria-label="ניווט ראשי">
+        <ul>
+          <li><a href="../index.html">דף הבית</a></li>
+          <li><a href="weddings.html">חתונות</a></li>
+          <li><a href="henna.html">חינה</a></li>
+          <li><a href="challah.html">הפרשת חלה</a></li>
+          <li><a href="birthdays.html">ימי הולדת</a></li>
+          <li><a href="bar-bat-mitzvah.html">בר / בת מצווה</a></li>
+          <li><a href="brit-milah.html">ברית מילה</a></li>
+          <li><a href="mimouna.html">מימונה</a></li>
+          <li><a href="menus.html">תפריטים</a></li>
+          <li><a href="save-the-date.html">Save the Date</a></li>
+        </ul>
+      </nav>
+      <button id="hamburger-btn" class="hamburger-btn" aria-label="פתח תפריט ניווט" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="נתיב ניווט">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="../index.html">דף הבית</a></li>
+        <li><a href="#" id="breadcrumb-cat-link">קטגוריה</a></li>
+        <li aria-current="page">הזמנה</li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- PRODUCT -->
+    <section class="section" aria-labelledby="product-title">
+      <div class="container">
+
+        <!-- Two-column: image + info -->
+        <div class="product-layout">
+
+          <!-- Image -->
+          <div class="product-image-wrap">
+            <img id="product-img" src="" alt="תמונת ההזמנה">
+            <div id="product-img-placeholder" class="product-img-placeholder">
+              טוען...
+            </div>
+          </div>
+
+          <!-- Font panel -->
+          <div class="font-panel" id="font-panel">
+            <button class="font-panel-toggle" id="font-panel-toggle" aria-expanded="false" aria-controls="font-panel-list">
+              <span id="font-panel-label">סוג הגופן</span>
+              <span class="font-panel-arrow" aria-hidden="true">&#9660;</span>
+            </button>
+            <div class="font-panel-list" id="font-panel-list" role="listbox" aria-label="בחירת גופן">
+
+              <button class="font-item" role="option" data-font="Frank Ruhl Libre" data-css="'Frank Ruhl Libre',serif">
+                <span class="font-item-name">פרנק רוהל</span>
+                <span class="font-item-sample" style="font-family:'Frank Ruhl Libre',serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Noto Serif Hebrew" data-css="'Noto Serif Hebrew',serif">
+                <span class="font-item-name">נוטו סריף</span>
+                <span class="font-item-sample" style="font-family:'Noto Serif Hebrew',serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="David Libre" data-css="'David Libre',serif">
+                <span class="font-item-name">דייוויד</span>
+                <span class="font-item-sample" style="font-family:'David Libre',serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Suez One" data-css="'Suez One',serif">
+                <span class="font-item-name">סואץ</span>
+                <span class="font-item-sample" style="font-family:'Suez One',serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Miriam Libre" data-css="'Miriam Libre',sans-serif">
+                <span class="font-item-name">מרים</span>
+                <span class="font-item-sample" style="font-family:'Miriam Libre',sans-serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Alef" data-css="'Alef',sans-serif">
+                <span class="font-item-name">אלף</span>
+                <span class="font-item-sample" style="font-family:'Alef',sans-serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Heebo" data-css="'Heebo',sans-serif">
+                <span class="font-item-name">היבו</span>
+                <span class="font-item-sample" style="font-family:'Heebo',sans-serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Assistant" data-css="'Assistant',sans-serif">
+                <span class="font-item-name">אסיסטנט</span>
+                <span class="font-item-sample" style="font-family:'Assistant',sans-serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Rubik" data-css="'Rubik',sans-serif">
+                <span class="font-item-name">רוביק</span>
+                <span class="font-item-sample" style="font-family:'Rubik',sans-serif;">עמית עיצובים</span>
+              </button>
+
+              <button class="font-item" role="option" data-font="Secular One" data-css="'Secular One',sans-serif">
+                <span class="font-item-name">סקולאר</span>
+                <span class="font-item-sample" style="font-family:'Secular One',sans-serif;">עמית עיצובים</span>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="product-info">
+            <h1 id="product-title">הזמנה לאירוע</h1>
+
+            <div class="product-price" id="product-price">
+              &#8362;<span id="product-price-val"></span>
+            </div>
+
+            <div class="product-includes">
+              <h3>מה כלול בהזמנה?</h3>
+              <ul>
+                <li>תמונה מעוצבת לשליחה בוואטסאפ עם פרטי האירוע שלכם</li>
+                <li>קובץ PDF להדפסה עצמאית (ללא שירות הדפסה)</li>
+                <li>עד שני סבבי תיקונים ללא עלות נוספת</li>
+              </ul>
+            </div>
+
+            <div class="product-delivery">
+              <strong>זמן אספקה:</strong> תוך 24 שעות (לא כולל שישי ושבת).
+              בשעות הפעילות (א&#39;-ה&#39; 10:00-18:00) — לרוב תוך שעה.
+            </div>
+
+            <div class="product-cta-block">
+              <p class="product-cta-question">רוצה עיצוב של הזמנה זו?</p>
+
+              <a id="wa-cta-btn"
+                 href="#"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="btn btn--primary product-cta-btn">
+                יצירת קשר בוואטסאפ
+              </a>
+
+              <div class="product-form-divider"><span>או</span></div>
+
+              <p class="product-form-label">השאירי פרטים ונחזור אליך</p>
+
+              <form class="product-contact-form" id="product-contact-form" novalidate>
+                <div class="product-form-field">
+                  <label for="form-name">שם מלא</label>
+                  <input type="text" id="form-name" name="name" placeholder="השם שלך" required>
+                </div>
+                <div class="product-form-field">
+                  <label for="form-phone">מספר טלפון</label>
+                  <input type="tel" id="form-phone" name="phone" placeholder="050-0000000" required>
+                </div>
+                <div class="product-form-field">
+                  <label for="form-email">כתובת מייל</label>
+                  <input type="email" id="form-email" name="email" placeholder="your@email.com">
+                </div>
+                <div class="product-form-field">
+                  <label for="form-note">הערה (אופציונלי)</label>
+                  <textarea id="form-note" name="note" placeholder="תיאור האירוע, תאריך, בקשות מיוחדות..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn--secondary product-cta-btn">שלחי פרטים</button>
+              </form>
+
+              <p class="product-cta-hours">שעות פעילות: א&#39;-ה&#39; 10:00-18:00</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>כל הזכויות שמורות &copy; 2025 עמית עיצובים</p>
+        <a href="privacy.html" class="accessibility-statement-link">מדיניות פרטיות</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/db.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/accessibility.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    const WA_NUMBER = '972505900090';
+
+    const CATEGORY_LABELS = {
+      weddings:          'הזמנות לחתונות',
+      henna:             'הזמנות לחינה',
+      challah:           'הזמנות להפרשת חלה',
+      birthdays:         'הזמנות לימי הולדת ילדים',
+      'bar-bat-mitzvah': 'הזמנות לבר / בת מצווה',
+      'brit-milah':      'הזמנות לברית/בריתה',
+      mimouna:           'הזמנות למימונה',
+      menus:             'תפריטים לאירועים',
+      'save-the-date':   'Save the Date',
+    };
+
+    const CATEGORY_PAGES = {
+      weddings:          'weddings.html',
+      henna:             'henna.html',
+      challah:           'challah.html',
+      birthdays:         'birthdays.html',
+      'bar-bat-mitzvah': 'bar-bat-mitzvah.html',
+      'brit-milah':      'brit-milah.html',
+      mimouna:           'mimouna.html',
+      menus:             'menus.html',
+      'save-the-date':   'save-the-date.html',
+    };
+
+    let currentCatLabel  = '';
+    let currentPrice     = '';
+    let selectedFontLabel = '';
+
+    function buildWAMsg(name, phone, email, note) {
+      return 'היי, אני מעוניינת בהזמנה זו!' +
+        (currentCatLabel   ? '\nסוג: '   + currentCatLabel   : '') +
+        (currentPrice      ? '\nמחיר: '  + currentPrice      : '') +
+        (selectedFontLabel ? '\nגופן: '  + selectedFontLabel : '') +
+        '\nקישור: ' + window.location.href +
+        (name  ? '\nשמי: '   + name  : '') +
+        (phone ? '\nטלפון: ' + phone : '') +
+        (email ? '\nמייל: '  + email : '') +
+        (note  ? '\nהערה: '  + note  : '');
+    }
+
+    function updateWABtn() {
+      document.getElementById('wa-cta-btn').href =
+        'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(buildWAMsg('', '', '', ''));
+    }
+
+    /* ---- Font panel ---- */
+    function initFontPanel() {
+      const toggle   = document.getElementById('font-panel-toggle');
+      const list     = document.getElementById('font-panel-list');
+      const label    = document.getElementById('font-panel-label');
+
+      toggle.addEventListener('click', () => {
+        const isOpen = list.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      document.querySelectorAll('.font-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.font-item').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedFontLabel = btn.dataset.font;
+          label.textContent = btn.querySelector('.font-item-name').textContent;
+          list.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          updateWABtn();
+        });
+      });
+    }
+
+    /* ---- Contact form ---- */
+    function initForm() {
+      document.getElementById('product-contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name  = document.getElementById('form-name').value.trim();
+        const phone = document.getElementById('form-phone').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const note  = document.getElementById('form-note').value.trim();
+        if (!name || !phone) {
+          if (!name)  document.getElementById('form-name').focus();
+          else        document.getElementById('form-phone').focus();
+          return;
+        }
+        const msg = buildWAMsg(name, phone, email, note);
+        window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+      });
+    }
+
+    /* ---- Image load ---- */
+    function loadImage(inv) {
+      const imgEl      = document.getElementById('product-img');
+      const placeholder = document.getElementById('product-img-placeholder');
+
+      if (!inv || !inv.imageData) {
+        placeholder.style.display = 'flex';
+        placeholder.textContent   = 'אין תמונה';
+        imgEl.style.display       = 'none';
+        return;
+      }
+
+      /* Data URLs are synchronous — set onload first, then src, then force-show */
+      imgEl.onload = () => {
+        imgEl.style.display       = 'block';
+        placeholder.style.display = 'none';
+      };
+      imgEl.onerror = () => {
+        placeholder.textContent   = 'לא ניתן לטעון את התמונה';
+        placeholder.style.display = 'flex';
+        imgEl.style.display       = 'none';
+      };
+      imgEl.src = inv.imageData;
+
+      /* Force show immediately — data URLs decode synchronously */
+      imgEl.style.display       = 'block';
+      placeholder.style.display = 'none';
+    }
+
+    /* ---- Main init ---- */
+    async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+
+      updateWABtn();
+
+      if (!id) {
+        document.getElementById('product-img-placeholder').innerHTML =
+          '<p>לא נבחרה הזמנה.<br><a href="../index.html" style="color:#b8955a;text-decoration:underline;">חזרה לדף הבית</a></p>';
+        document.getElementById('font-panel').style.display = 'none';
+        return;
+      }
+
+      let inv = null;
+      try { inv = await dbGet(id); } catch (e) { console.error(e); }
+
+      if (!inv) {
+        document.getElementById('product-img-placeholder').innerHTML =
+          '<p>ההזמנה לא נמצאה.<br><a href="../index.html" style="color:#b8955a;text-decoration:underline;">חזרה לדף הבית</a></p>';
+        document.getElementById('font-panel').style.display = 'none';
+        return;
+      }
+
+      loadImage(inv);
+
+      if (inv.price && inv.price !== '0') {
+        document.getElementById('product-price-val').textContent = inv.price;
+        document.getElementById('product-price').style.display = 'block';
+      }
+
+      currentCatLabel = CATEGORY_LABELS[inv.category] || 'אירוע';
+      currentPrice    = inv.price && inv.price !== '0' ? '₪' + inv.price : '';
+      document.getElementById('product-title').textContent = 'הזמנה ל' + currentCatLabel;
+      document.title = 'הזמנה ל' + currentCatLabel + ' | עמית עיצובים';
+      const catLink = document.getElementById('breadcrumb-cat-link');
+      catLink.textContent = currentCatLabel;
+      catLink.href = CATEGORY_PAGES[inv.category] || '#';
+
+      updateWABtn();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => { init(); initForm(); initFontPanel(); });
+    } else {
+      init(); initForm(); initFontPanel();
+    }
+  })();
+  </script>
+</body>
+</html>

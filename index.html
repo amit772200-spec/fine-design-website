@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he-IL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="עיצוב הזמנות לאירועים בהתאמה אישית — חתונות, חינה, ברית מילה, בר/בת מצווה, ימי הולדת ועוד. מהיר, מקצועי ובמחיר נגיש.">
+  <meta name="keywords" content="הזמנות לאירועים, עיצוב הזמנות, הזמנות לחתונה, הזמנות לחינה, הזמנות לברית, הזמנות לבר מצווה, הזמנות ימי הולדת, הזמנות מעוצבות">
+  <meta name="author" content="עמית עיצובים">
+  <meta name="robots" content="index, follow">
+  <title>עמית עיצובים | עיצוב הזמנות לאירועים — חתונות, חינה, ברית ועוד</title>
+  <!-- Canonical -->
+  <link rel="canonical" href="https://bespoke-raindrop-0633e9.netlify.app/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:url" content="https://bespoke-raindrop-0633e9.netlify.app/">
+  <meta property="og:title" content="עמית עיצובים | עיצוב הזמנות לאירועים">
+  <meta property="og:description" content="עיצוב הזמנות לאירועים בהתאמה אישית — חתונות, חינה, ברית מילה, בר/בת מצווה, ימי הולדת ועוד. מהיר, מקצועי ובמחיר נגיש.">
+  <meta property="og:image" content="https://bespoke-raindrop-0633e9.netlify.app/images/og-image.jpg">
+  <meta property="og:site_name" content="עמית עיצובים">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="עמית עיצובים | עיצוב הזמנות לאירועים">
+  <meta name="twitter:description" content="עיצוב הזמנות לאירועים בהתאמה אישית — חתונות, חינה, ברית מילה, בר/בת מצווה ועוד.">
+  <meta name="twitter:image" content="https://bespoke-raindrop-0633e9.netlify.app/images/og-image.jpg">
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "עמית עיצובים",
+    "description": "עיצוב הזמנות לאירועים בהתאמה אישית — חתונות, חינה, ברית מילה, בר/בת מצווה, ימי הולדת ועוד.",
+    "url": "https://bespoke-raindrop-0633e9.netlify.app",
+    "telephone": "+972505900090",
+    "email": "amit@example.com",
+    "priceRange": "₪₪",
+    "areaServed": { "@type": "Country", "name": "Israel" },
+    "serviceType": "עיצוב הזמנות לאירועים",
+    "inLanguage": "he",
+    "sameAs": []
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo" aria-label="עמית עיצובים - דף הבית">
+        <span class="logo-text"><span class="logo-fine">Fine</span><span class="logo-design">Design</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop" aria-label="ניווט ראשי">
+        <ul>
+          <li><a href="index.html">דף הבית</a></li>
+          <li><a href="pages/weddings.html">חתונות</a></li>
+          <li><a href="pages/henna.html">חינה</a></li>
+          <li><a href="pages/challah.html">הפרשת חלה</a></li>
+          <li><a href="pages/birthdays.html">ימי הולדת</a></li>
+          <li><a href="pages/bar-bat-mitzvah.html">בר / בת מצווה</a></li>
+          <li><a href="pages/brit-milah.html">ברית/בריתה</a></li>
+          <li><a href="pages/mimouna.html">מימונה</a></li>
+          <li><a href="pages/menus.html">תפריטים</a></li>
+          <li><a href="pages/save-the-date.html">Save the Date</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger button (mobile) -->
+      <button
+        id="hamburger-btn"
+        class="hamburger-btn"
+        aria-label="פתח תפריט ניווט"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ===== MOBILE MENU ===== -->
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="תפריט ניווט">
+    <div class="mobile-menu-header">
+      <span class="logo-text logo-text--sm"><span class="logo-fine">Fine</span><span class="logo-design">Design</span></span>
+      <button id="mobile-menu-close" class="mobile-menu-close" aria-label="סגור תפריט">&#215;</button>
+    </div>
+    <nav class="mobile-menu-nav" aria-label="ניווט ראשי — תפריט נייד">
+      <ul>
+        <li><a href="index.html"><span class="menu-number" aria-hidden="true">1.</span> דף הבית</a></li>
+        <li><a href="pages/weddings.html"><span class="menu-number" aria-hidden="true">2.</span> הזמנות לחתונות</a></li>
+        <li><a href="pages/henna.html"><span class="menu-number" aria-hidden="true">3.</span> הזמנות לחינה</a></li>
+        <li><a href="pages/challah.html"><span class="menu-number" aria-hidden="true">4.</span> הזמנות להפרשת חלה</a></li>
+        <li><a href="pages/birthdays.html"><span class="menu-number" aria-hidden="true">5.</span> הזמנות לימי הולדת ילדים</a></li>
+        <li><a href="pages/bar-bat-mitzvah.html"><span class="menu-number" aria-hidden="true">6.</span> הזמנות לבר / בת מצווה</a></li>
+        <li><a href="pages/brit-milah.html"><span class="menu-number" aria-hidden="true">7.</span> הזמנות לברית/בריתה</a></li>
+        <li><a href="pages/mimouna.html"><span class="menu-number" aria-hidden="true">8.</span> הזמנות למימונה</a></li>
+        <li><a href="pages/menus.html"><span class="menu-number" aria-hidden="true">9.</span> תפריטים לאירועים</a></li>
+        <li><a href="pages/save-the-date.html"><span class="menu-number" aria-hidden="true">10.</span> Save the Date</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-content">
+          <h1 id="hero-heading">ההזמנות מעוצבות בעיצוב מדויק ומהיר</h1>
+          <p class="hero-desc">
+            הזמנות מעוצבות בהתאמה אישית לכל סוג אירוע —
+            חתונה, חינה, ברית, בר מצווה ועוד.
+            עיצוב מהיר, מקצועי, מדויק וזול.
+          </p>
+          <a href="#categories" class="btn btn--primary">לכל סוגי ההזמנות</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES GRID -->
+    <section class="section" id="categories" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="categories-heading">איזה אירוע אתם חוגגים?</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="subtitle">בחרו את הקטגוריה המתאימה לכם וגלו מגוון עיצובים</p>
+        </div>
+
+        <div class="categories-grid">
+
+          <a href="pages/weddings.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/weddings-thumb.jpg" alt="הזמנות לחתונות — עיצובים אלגנטיים" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">הזמנות לחתונות</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/henna.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/henna-thumb.jpg" alt="הזמנות לחינה" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">הזמנות לחינה</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/challah.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/challah-thumb.jpg" alt="הזמנות להפרשת חלה" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">הזמנות להפרשת חלה</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/birthdays.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/birthdays-thumb.jpg" alt="הזמנות לימי הולדת ילדים" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">הזמנות לימי הולדת ילדים</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/bar-bat-mitzvah.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/barmitzvah-thumb.jpg" alt="הזמנות לבר ובת מצווה" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">בר / בת מצווה</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/brit-milah.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/brit-thumb.jpg" alt="הזמנות לברית/בריתה" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">הזמנות לברית/בריתה</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/mimouna.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/mimouna-thumb.jpg" alt="הזמנות למימונה" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">הזמנות למימונה</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/menus.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/menus-thumb.jpg" alt="תפריטים לאירועים" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">תפריטים לאירועים</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+          <a href="pages/save-the-date.html" class="category-card">
+            <div class="category-card-img">
+              <img src="images/savethedate-thumb.jpg" alt="Save the Date כרטיסי שמירת תאריך" loading="lazy" onerror="this.style.display='none'">
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Save the Date</h3>
+              <span class="category-card-link">לצפייה בעיצובים</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-inner">
+          <div class="about-text">
+            <h2 id="about-heading">מי אני?</h2>
+            <div class="divider"></div>
+            <p>
+              שמי עמית, מעצבת הזמנות לאירועים עם ניסיון של שנים בתחום.
+              אני מאמינה שכל הזמנה היא הדפסת אצבע של האירוע שלכם —
+              ייחודית, אישית ומרגשת.
+            </p>
+            <p>
+              כל עיצוב נעשה בקפידה, בהתאמה מלאה לצבעים, לסגנון ולדמות
+              שרוצים להביע. אני כאן כדי להפוך כל אירוע לבלתי נשכח.
+            </p>
+            <a href="#contact" class="btn btn--outline">צור קשר</a>
+          </div>
+          <div class="about-image-placeholder" role="img" aria-label="תמונת פורטרט — יתווסף בהמשך">
+            תמונה תופיע כאן
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="process-heading">איך התהליך עובד?</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="subtitle">שלושה שלבים פשוטים ואתם מקבלים הזמנה מושלמת</p>
+        </div>
+
+        <ol class="process-steps" aria-label="שלבי התהליך">
+          <li class="process-step">
+            <div class="step-number" aria-hidden="true">1</div>
+            <h3>צרו קשר</h3>
+            <p>שלחו לי הודעה עם פרטי האירוע, התאריך והעיצוב שאהבתם.</p>
+          </li>
+          <li class="process-step">
+            <div class="step-number" aria-hidden="true">2</div>
+            <h3>תכנון ועיצוב</h3>
+            <p>אני מעצבת עבורכם הזמנה מותאמת אישית ושולחת טיוטה לאישורכם.</p>
+          </li>
+          <li class="process-step">
+            <div class="step-number" aria-hidden="true">3</div>
+            <h3>קבלת ההזמנה</h3>
+            <p>לאחר האישור הסופי תקבלו את הקובץ המוכן לשליחה ולהדפסה.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section--alt" id="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="testimonials-heading">מה הלקוחות אומרים</h2>
+          <div class="divider" aria-hidden="true"></div>
+        </div>
+
+        <div class="testimonials-grid">
+
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              קיבלנו הזמנה מדהימה לחתונה שלנו. עמית הקשיבה לכל פרט קטן
+              והתוצאה עברה את כל הציפיות שלנו. ממליצה בחום!
+            </p>
+            <p class="testimonial-author">מיכל ואביב</p>
+            <p class="testimonial-event">חתונה</p>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              הזמנות לחינה שלי היו הכי יפות בחתונות שראיתי.
+              כולם שאלו מי עיצבה. שירות מהיר, מדויק ומקסים.
+            </p>
+            <p class="testimonial-author">סמר</p>
+            <p class="testimonial-event">חינה</p>
+          </article>
+
+          <article class="testimonial-card">
+            <p class="testimonial-quote">
+              הזמינה עיצוב לבר מצווה של הבן שלי ולא יכולתי להיות
+              מרוצה יותר. עמית עבדה מהר ועם הרבה אהבה לפרטים.
+            </p>
+            <p class="testimonial-author">דינה</p>
+            <p class="testimonial-event">בר מצווה</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-inner">
+          <h2 id="contact-heading">בואו נתחיל לעצב יחד</h2>
+          <div class="divider" aria-hidden="true"></div>
+          <p>
+            שמחה לשמוע מכם! ניתן לפנות אלי ישירות ואחזור אליכם
+            בהקדם האפשרי.
+          </p>
+          <a href="pages/weddings.html" class="btn btn--primary">לצפייה בהזמנות</a>
+
+          <div class="contact-details" role="list">
+            <div class="contact-item" role="listitem">
+              WhatsApp:
+              <a href="https://wa.me/972505900090" target="_blank" rel="noopener noreferrer">
+                שלחי הודעה
+              </a>
+            </div>
+            <div class="contact-item" role="listitem">
+              מייל:
+              <a href="mailto:amit@example.com">amit@example.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <div class="logo" aria-label="עמית עיצובים">
+            <span class="logo-text"><span class="logo-fine">Fine</span><span class="logo-design">Design</span></span>
+          </div>
+          <p>הזמנות לאירועים בסגנון קלאסי ואלגנטי — עיצוב אישי ומקצועי לכל אירוע.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="ניווט הזמנות">
+          <h4>קטגוריות</h4>
+          <ul>
+            <li><a href="pages/weddings.html">הזמנות לחתונות</a></li>
+            <li><a href="pages/henna.html">הזמנות לחינה</a></li>
+            <li><a href="pages/challah.html">הפרשת חלה</a></li>
+            <li><a href="pages/birthdays.html">ימי הולדת ילדים</a></li>
+            <li><a href="pages/bar-bat-mitzvah.html">בר / בת מצווה</a></li>
+            <li><a href="pages/brit-milah.html">ברית/בריתה</a></li>
+            <li><a href="pages/mimouna.html">מימונה</a></li>
+            <li><a href="pages/menus.html">תפריטים</a></li>
+            <li><a href="pages/save-the-date.html">Save the Date</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-legal">
+          <h4>מידע נוסף</h4>
+          <ul>
+            <li><a href="pages/privacy.html">מדיניות פרטיות</a></li>
+            <li><a href="pages/terms.html">תנאי שימוש</a></li>
+            <li><a href="#contact">צרי קשר</a></li>
+          </ul>
+
+          <div class="a11y-statement" style="margin-block-start:24px;padding:16px;">
+            <h2>הצהרת נגישות</h2>
+            <p>
+              אתר זה עומד בדרישות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות),
+              התשע"ג-2013 ובתקן WCAG 2.1 ברמה AA.
+              בוצעה בדיקת נגישות בהתאם לתקן הישראלי 5568.
+              לפניות בנושא נגישות: <a href="mailto:amit@example.com">amit@example.com</a>
+              <br>תאריך עדכון אחרון: מאי 2025.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>כל הזכויות שמורות &copy; 2025 עמית עיצובים</p>
+        <a href="pages/privacy.html" class="accessibility-statement-link">מדיניות פרטיות</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/accessibility.js"></script>
+</body>
+</html>

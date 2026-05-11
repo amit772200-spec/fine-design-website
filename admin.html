@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he-IL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניהול הזמנות | עמית עיצובים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body class="admin-body">
+
+  <!-- ===== LOGIN SCREEN ===== -->
+  <div id="login-screen" class="admin-login" role="main">
+    <div class="admin-login-box">
+      <h1>כניסה לניהול</h1>
+      <p>עמית עיצובים — פאנל ניהול הזמנות</p>
+      <label for="admin-password" class="sr-only">סיסמה</label>
+      <input
+        type="password"
+        id="admin-password"
+        placeholder="סיסמה"
+        autocomplete="current-password"
+        aria-label="סיסמת כניסה"
+      >
+      <button class="btn btn--primary" id="login-btn" style="width:100%;">כניסה</button>
+      <p class="admin-login-error" id="login-error" role="alert">סיסמה שגויה. נסי שוב.</p>
+    </div>
+  </div>
+
+  <!-- ===== ADMIN PANEL ===== -->
+  <div id="admin-panel" style="display:none;">
+
+    <header class="admin-header" role="banner">
+      <div class="container admin-header-inner">
+        <h1>ניהול הזמנות</h1>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <a href="index.html" class="admin-logout-btn" target="_blank">צפייה באתר</a>
+          <button class="admin-logout-btn" id="logout-btn">יציאה</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main container" id="main-content">
+      <div class="admin-grid">
+
+        <!-- LEFT: ADD INVITATION FORM -->
+        <aside>
+          <div class="admin-card">
+            <h2>הוספת הזמנה חדשה</h2>
+
+            <div class="admin-form-group">
+              <label for="admin-category">קטגוריה</label>
+              <select id="admin-category">
+                <option value="weddings">הזמנות לחתונות</option>
+                <option value="henna">הזמנות לחינה</option>
+                <option value="challah">הזמנות להפרשת חלה</option>
+                <option value="birthdays">הזמנות לימי הולדת ילדים</option>
+                <option value="bar-bat-mitzvah">הזמנות לבר / בת מצווה</option>
+                <option value="brit-milah">הזמנות לברית/בריתה</option>
+                <option value="mimouna">הזמנות למימונה</option>
+                <option value="menus">תפריטים לאירועים</option>
+                <option value="save-the-date">Save the Date</option>
+              </select>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="admin-price">מחיר (&#8362;)</label>
+              <input type="number" id="admin-price" placeholder="לדוגמה: 350" min="0" step="1">
+            </div>
+
+            <div class="admin-form-group">
+              <label>תמונת ההזמנה</label>
+              <div class="upload-area" id="upload-area">
+                <input
+                  type="file"
+                  id="admin-image-input"
+                  accept="image/*"
+                  aria-label="העלאת תמונת הזמנה"
+                >
+                <div class="upload-area-text">
+                  לחצי כאן או גרירי תמונה לכאן<br>
+                  <span style="font-size:0.75rem;">JPG, PNG, WEBP — עד 5MB</span>
+                </div>
+                <img id="upload-preview" class="upload-preview" alt="תצוגה מקדימה של ההזמנה">
+              </div>
+            </div>
+
+            <button class="admin-save-btn" id="admin-save-btn" disabled>
+              הוספת הזמנה
+            </button>
+          </div>
+        </aside>
+
+        <!-- RIGHT: INVITATIONS LIST -->
+        <div>
+          <div class="admin-card">
+            <h2>כל ההזמנות (<span id="inv-count">0</span>)</h2>
+
+            <div class="admin-filter" role="group" aria-label="סינון לפי קטגוריה">
+              <button class="admin-filter-btn active" data-filter="all">הכל</button>
+              <button class="admin-filter-btn" data-filter="weddings">חתונות</button>
+              <button class="admin-filter-btn" data-filter="henna">חינה</button>
+              <button class="admin-filter-btn" data-filter="challah">הפרשת חלה</button>
+              <button class="admin-filter-btn" data-filter="birthdays">ימי הולדת</button>
+              <button class="admin-filter-btn" data-filter="bar-bat-mitzvah">בר/בת מצווה</button>
+              <button class="admin-filter-btn" data-filter="brit-milah">ברית</button>
+              <button class="admin-filter-btn" data-filter="mimouna">מימונה</button>
+              <button class="admin-filter-btn" data-filter="menus">תפריטים</button>
+              <button class="admin-filter-btn" data-filter="save-the-date">STD</button>
+            </div>
+
+            <div class="admin-invitations-grid" id="admin-grid">
+              <div class="admin-empty">עדיין אין הזמנות. הוסיפי את הראשונה!</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="admin-success-toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/accessibility.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
