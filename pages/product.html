@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="הזמנה לאירוע — עמית עיצובים.">
-  <title>הזמנה לאירוע | עמית עיצובים</title>
+  <meta name="description" content="הזמנה לאירוע — Fine Design, סטודיו עמית.">
+  <title>הזמנה לאירוע | Fine Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@400;600&family=Rubik:wght@400;500&family=Secular+One&family=Noto+Serif+Hebrew:wght@400;700&family=David+Libre:wght@400;700&family=Miriam+Libre:wght@400;700&family=Alef:wght@400;700&family=Suez+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@400;600&family=Rubik:wght@400;500&family=Secular+One&family=Noto+Serif+Hebrew:wght@400;700&family=David+Libre:wght@400;700&family=Miriam+Libre:wght@400;700&family=Alef:wght@400;700&family=Suez+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/accessibility.css">
 </head>
@@ -16,28 +16,65 @@
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="../index.html" class="logo" aria-label="עמית עיצובים - דף הבית">
-        <span class="logo-text"><span class="logo-fine">Fine</span><span class="logo-design">Design</span></span>
-      </a>
-      <nav class="nav-desktop" aria-label="ניווט ראשי">
-        <ul>
-          <li><a href="../index.html">דף הבית</a></li>
-          <li><a href="weddings.html">חתונות</a></li>
-          <li><a href="henna.html">חינה</a></li>
-          <li><a href="challah.html">הפרשת חלה</a></li>
-          <li><a href="birthdays.html">ימי הולדת</a></li>
-          <li><a href="bar-bat-mitzvah.html">בר / בת מצווה</a></li>
-          <li><a href="brit-milah.html">ברית מילה</a></li>
-          <li><a href="mimouna.html">מימונה</a></li>
-          <li><a href="menus.html">תפריטים</a></li>
-          <li><a href="save-the-date.html">Save the Date</a></li>
-        </ul>
-      </nav>
-      <button id="hamburger-btn" class="hamburger-btn" aria-label="פתח תפריט ניווט" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="header-row-brand">
+        <span class="header-rule header-rule--start" aria-hidden="true"></span>
+        <a href="../index.html" class="logo" aria-label="Fine Design — דף הבית">
+          <span class="logo-text">
+            <span class="logo-fine">Fine Design</span>
+            <span class="logo-design">Studio · עמית</span>
+          </span>
+        </a>
+        <span class="header-rule header-rule--end" aria-hidden="true"></span>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="פתח תפריט ניווט" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="header-row-nav">
+        <nav class="nav-desktop" aria-label="ניווט ראשי">
+          <ul>
+            <li><a href="../index.html">דף הבית</a></li>
+            <li><a href="weddings.html">חתונות</a></li>
+            <li><a href="henna.html">חינה</a></li>
+            <li><a href="challah.html">הפרשת חלה</a></li>
+            <li><a href="birthdays.html">ימי הולדת</a></li>
+            <li><a href="bar-bat-mitzvah.html">בר / בת מצווה</a></li>
+            <li><a href="brit-milah.html">ברית/בריתה</a></li>
+            <li><a href="mimouna.html">מימונה</a></li>
+            <li><a href="menus.html">תפריטים</a></li>
+            <li><a href="save-the-date.html">Save the Date</a></li>
+          </ul>
+        </nav>
+      </div>
+
     </div>
   </header>
+
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="תפריט ניווט">
+    <div class="mobile-menu-header">
+      <span class="logo-text logo-text--sm">
+        <span class="logo-fine">Fine Design</span>
+        <span class="logo-design">Studio · עמית</span>
+      </span>
+      <button id="mobile-menu-close" class="mobile-menu-close" aria-label="סגור תפריט">&#215;</button>
+    </div>
+    <nav class="mobile-menu-nav" aria-label="ניווט ראשי — תפריט נייד">
+      <ul>
+        <li><a href="../index.html"><span class="menu-number" aria-hidden="true">01</span> דף הבית</a></li>
+        <li><a href="weddings.html"><span class="menu-number" aria-hidden="true">02</span> הזמנות לחתונות</a></li>
+        <li><a href="henna.html"><span class="menu-number" aria-hidden="true">03</span> הזמנות לחינה</a></li>
+        <li><a href="challah.html"><span class="menu-number" aria-hidden="true">04</span> הזמנות להפרשת חלה</a></li>
+        <li><a href="birthdays.html"><span class="menu-number" aria-hidden="true">05</span> הזמנות לימי הולדת</a></li>
+        <li><a href="bar-bat-mitzvah.html"><span class="menu-number" aria-hidden="true">06</span> הזמנות לבר / בת מצווה</a></li>
+        <li><a href="brit-milah.html"><span class="menu-number" aria-hidden="true">07</span> הזמנות לברית/בריתה</a></li>
+        <li><a href="mimouna.html"><span class="menu-number" aria-hidden="true">08</span> הזמנות למימונה</a></li>
+        <li><a href="menus.html"><span class="menu-number" aria-hidden="true">09</span> תפריטים לאירועים</a></li>
+        <li><a href="save-the-date.html"><span class="menu-number" aria-hidden="true">10</span> Save the Date</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <nav class="breadcrumb" aria-label="נתיב ניווט">
     <div class="container">
@@ -51,14 +88,11 @@
 
   <main id="main-content">
 
-    <!-- PRODUCT -->
     <section class="section" aria-labelledby="product-title">
       <div class="container">
 
-        <!-- Two-column: image + info -->
         <div class="product-layout">
 
-          <!-- Image -->
           <div class="product-image-wrap">
             <img id="product-img" src="" alt="תמונת ההזמנה">
             <div id="product-img-placeholder" class="product-img-placeholder">
@@ -66,7 +100,6 @@
             </div>
           </div>
 
-          <!-- Font panel -->
           <div class="font-panel" id="font-panel">
             <button class="font-panel-toggle" id="font-panel-toggle" aria-expanded="false" aria-controls="font-panel-list">
               <span id="font-panel-label">סוג הגופן</span>
@@ -127,8 +160,8 @@
             </div>
           </div>
 
-          <!-- Info -->
           <div class="product-info">
+            <span class="eyebrow">Fine Design · הזמנה</span>
             <h1 id="product-title">הזמנה לאירוע</h1>
 
             <div class="product-price" id="product-price">
@@ -138,7 +171,7 @@
             <div class="product-includes">
               <h3>מה כלול בהזמנה?</h3>
               <ul>
-                <li>תמונה מעוצבת לשליחה בוואטסאפ עם פרטי האירוע שלכם</li>
+                <li>תמונה מעוצבת לשליחה ב-WhatsApp עם פרטי האירוע שלכם</li>
                 <li>קובץ PDF להדפסה עצמאית (ללא שירות הדפסה)</li>
                 <li>עד שני סבבי תיקונים ללא עלות נוספת</li>
               </ul>
@@ -150,19 +183,19 @@
             </div>
 
             <div class="product-cta-block">
-              <p class="product-cta-question">רוצה עיצוב של הזמנה זו?</p>
+              <p class="product-cta-question">רוצה את העיצוב הזה?</p>
 
               <a id="wa-cta-btn"
                  href="#"
                  target="_blank"
                  rel="noopener noreferrer"
-                 class="btn btn--primary product-cta-btn">
-                יצירת קשר בוואטסאפ
+                 class="btn btn--whatsapp product-cta-btn">
+                בואו נדבר ב-WhatsApp
               </a>
 
               <div class="product-form-divider"><span>או</span></div>
 
-              <p class="product-form-label">השאירי פרטים ונחזור אליך</p>
+              <p class="product-form-label">השאירי פרטים ואחזור אליך</p>
 
               <form class="product-contact-form" id="product-contact-form" novalidate>
                 <div class="product-form-field">
@@ -181,7 +214,7 @@
                   <label for="form-note">הערה (אופציונלי)</label>
                   <textarea id="form-note" name="note" placeholder="תיאור האירוע, תאריך, בקשות מיוחדות..." rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn--secondary product-cta-btn">שלחי פרטים</button>
+                <button type="submit" class="btn btn--ghost product-cta-btn">שליחת פרטים</button>
               </form>
 
               <p class="product-cta-hours">שעות פעילות: א&#39;-ה&#39; 10:00-18:00</p>
@@ -198,15 +231,23 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-bottom">
-        <p>כל הזכויות שמורות &copy; 2025 עמית עיצובים</p>
-        <a href="privacy.html" class="accessibility-statement-link">מדיניות פרטיות</a>
+        <p>&copy; 2026 Fine Design · כל הזכויות שמורות</p>
+        <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:center;">
+          <a href="privacy.html" class="accessibility-statement-link">מדיניות פרטיות</a>
+          <span aria-hidden="true" style="opacity:0.3;">·</span>
+          <button type="button" class="accessibility-statement-link" data-cookie-settings style="background:none;border:none;padding:0;font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">ניהול עוגיות</button>
+          <span aria-hidden="true" style="opacity:0.3;">·</span>
+          <a href="../admin.html" class="accessibility-statement-link" style="opacity:0.55;" aria-label="כניסה לפאנל ניהול">ניהול</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script src="../js/db.js"></script>
+  <script src="../js/site-settings.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/accessibility.js"></script>
+  <script src="../js/cookie-banner.js"></script>
   <script>
   (function () {
     'use strict';
@@ -258,11 +299,10 @@
         'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(buildWAMsg('', '', '', ''));
     }
 
-    /* ---- Font panel ---- */
     function initFontPanel() {
-      const toggle   = document.getElementById('font-panel-toggle');
-      const list     = document.getElementById('font-panel-list');
-      const label    = document.getElementById('font-panel-label');
+      const toggle = document.getElementById('font-panel-toggle');
+      const list   = document.getElementById('font-panel-list');
+      const label  = document.getElementById('font-panel-label');
 
       toggle.addEventListener('click', () => {
         const isOpen = list.classList.toggle('is-open');
@@ -282,7 +322,6 @@
       });
     }
 
-    /* ---- Contact form ---- */
     function initForm() {
       document.getElementById('product-contact-form').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -300,9 +339,8 @@
       });
     }
 
-    /* ---- Image load ---- */
     function loadImage(inv) {
-      const imgEl      = document.getElementById('product-img');
+      const imgEl       = document.getElementById('product-img');
       const placeholder = document.getElementById('product-img-placeholder');
 
       if (!inv || !inv.imageData) {
@@ -312,7 +350,6 @@
         return;
       }
 
-      /* Data URLs are synchronous — set onload first, then src, then force-show */
       imgEl.onload = () => {
         imgEl.style.display       = 'block';
         placeholder.style.display = 'none';
@@ -324,12 +361,10 @@
       };
       imgEl.src = inv.imageData;
 
-      /* Force show immediately — data URLs decode synchronously */
       imgEl.style.display       = 'block';
       placeholder.style.display = 'none';
     }
 
-    /* ---- Main init ---- */
     async function init() {
       const params = new URLSearchParams(window.location.search);
       const id = params.get('id');
@@ -338,7 +373,7 @@
 
       if (!id) {
         document.getElementById('product-img-placeholder').innerHTML =
-          '<p>לא נבחרה הזמנה.<br><a href="../index.html" style="color:#b8955a;text-decoration:underline;">חזרה לדף הבית</a></p>';
+          '<p>לא נבחרה הזמנה.<br><a href="../index.html" style="color:var(--clay);text-decoration:underline;">חזרה לדף הבית</a></p>';
         document.getElementById('font-panel').style.display = 'none';
         return;
       }
@@ -348,7 +383,7 @@
 
       if (!inv) {
         document.getElementById('product-img-placeholder').innerHTML =
-          '<p>ההזמנה לא נמצאה.<br><a href="../index.html" style="color:#b8955a;text-decoration:underline;">חזרה לדף הבית</a></p>';
+          '<p>ההזמנה לא נמצאה.<br><a href="../index.html" style="color:var(--clay);text-decoration:underline;">חזרה לדף הבית</a></p>';
         document.getElementById('font-panel').style.display = 'none';
         return;
       }
@@ -363,7 +398,7 @@
       currentCatLabel = CATEGORY_LABELS[inv.category] || 'אירוע';
       currentPrice    = inv.price && inv.price !== '0' ? '₪' + inv.price : '';
       document.getElementById('product-title').textContent = 'הזמנה ל' + currentCatLabel;
-      document.title = 'הזמנה ל' + currentCatLabel + ' | עמית עיצובים';
+      document.title = 'הזמנה ל' + currentCatLabel + ' | Fine Design';
       const catLink = document.getElementById('breadcrumb-cat-link');
       catLink.textContent = currentCatLabel;
       catLink.href = CATEGORY_PAGES[inv.category] || '#';

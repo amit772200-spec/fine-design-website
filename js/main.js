@@ -1,5 +1,8 @@
 'use strict';
 
+/* Mark JS as available — enables [data-reveal] hidden-by-default rules */
+document.documentElement.classList.add('js');
+
 /* =========================================================
    HAMBURGER MENU
    ========================================================= */
@@ -9,21 +12,23 @@ const menuClose    = document.getElementById('mobile-menu-close');
 const menuOverlay  = document.getElementById('mobile-menu-overlay');
 
 function openMenu() {
+  if (!mobileMenu) return;
   mobileMenu.classList.add('is-open');
-  hamburgerBtn.setAttribute('aria-expanded', 'true');
+  hamburgerBtn && hamburgerBtn.setAttribute('aria-expanded', 'true');
   document.body.style.overflow = 'hidden';
   menuClose && menuClose.focus();
 }
 
 function closeMenu() {
+  if (!mobileMenu) return;
   mobileMenu.classList.remove('is-open');
-  hamburgerBtn.setAttribute('aria-expanded', 'false');
+  hamburgerBtn && hamburgerBtn.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
   hamburgerBtn && hamburgerBtn.focus();
 }
 
 hamburgerBtn && hamburgerBtn.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.contains('is-open');
+  const isOpen = mobileMenu && mobileMenu.classList.contains('is-open');
   isOpen ? closeMenu() : openMenu();
 });
 
@@ -70,70 +75,61 @@ mobileMenu && mobileMenu.addEventListener('keydown', (e) => {
 })();
 
 /* =========================================================
-   ADMIN BUTTON — fixed bottom-left, subtle but accessible
-   ========================================================= */
-(function injectAdminLink() {
-  const isAdminPage = window.location.pathname.includes('admin.html');
-  if (isAdminPage) return;
-
-  const basePath = window.location.pathname.includes('/pages/') ? '../' : '';
-
-  const link = document.createElement('a');
-  link.href  = basePath + 'admin.html';
-  link.setAttribute('aria-label', 'כניסה לפאנל ניהול');
-  link.style.cssText = [
-    'position:fixed',
-    'bottom:76px',
-    'inset-inline-start:12px',
-    'display:flex',
-    'align-items:center',
-    'justify-content:center',
-    'padding:6px 12px',
-    'background:rgba(44,36,24,0.75)',
-    'color:rgba(184,149,90,0.9)',
-    'font-family:Arial,sans-serif',
-    'font-size:10px',
-    'font-weight:700',
-    'letter-spacing:0.12em',
-    'text-decoration:none',
-    'border-radius:4px',
-    'border:1px solid rgba(184,149,90,0.4)',
-    'backdrop-filter:blur(4px)',
-    'transition:all 0.25s ease',
-    'z-index:9000',
-    'opacity:0.55',
-    'cursor:pointer',
-    'white-space:nowrap',
-  ].join(';');
-  link.textContent = 'ADMIN';
-
-  link.addEventListener('mouseenter', () => {
-    link.style.opacity = '1';
-    link.style.background = 'rgba(44,36,24,0.92)';
-    link.style.color = '#b8955a';
-    link.style.borderColor = '#b8955a';
-    link.style.boxShadow = '0 4px 16px rgba(44,36,24,0.4)';
-  });
-  link.addEventListener('mouseleave', () => {
-    link.style.opacity = '0.55';
-    link.style.background = 'rgba(44,36,24,0.75)';
-    link.style.color = 'rgba(184,149,90,0.9)';
-    link.style.borderColor = 'rgba(184,149,90,0.4)';
-    link.style.boxShadow = 'none';
-  });
-
-  document.body.appendChild(link);
-})();
-
-/* =========================================================
    SMOOTH SCROLL for anchor links
    ========================================================= */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
+    const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
     closeMenu();
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+/* =========================================================
+   SCROLL-REVEAL — fade up sections as they enter the viewport
+   ========================================================= */
+(function initScrollReveal() {
+  const all = document.querySelectorAll('[data-reveal]');
+  if (!all.length) return;
+
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    all.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.01, rootMargin: '0px 0px -10% 0px' });
+
+  all.forEach(el => observer.observe(el));
+
+  /* Safety fallback — reveal anything left after 1.5s
+     (covers headless screenshot tools that don't trigger IntersectionObserver) */
+  setTimeout(() => {
+    document.querySelectorAll('[data-reveal]:not(.is-revealed)').forEach(el => {
+      el.classList.add('is-revealed');
+    });
+  }, 1500);
+})();
+
+/* =========================================================
+   MARQUEE — duplicate inner content for seamless loop
+   ========================================================= */
+(function initMarquee() {
+  document.querySelectorAll('.marquee-track').forEach(track => {
+    if (track.dataset.cloned) return;
+    const clone = track.innerHTML;
+    track.innerHTML = clone + clone;
+    track.dataset.cloned = 'true';
+  });
+})();

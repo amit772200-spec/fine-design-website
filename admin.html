@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ניהול הזמנות | עמית עיצובים</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>ניהול | Fine Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@400;600&family=Rubik:wght@400;500&family=Noto+Serif+Hebrew:wght@400;700&family=David+Libre:wght@400;700&family=Suez+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/accessibility.css">
 </head>
@@ -15,8 +16,9 @@
   <!-- ===== LOGIN SCREEN ===== -->
   <div id="login-screen" class="admin-login" role="main">
     <div class="admin-login-box">
+      <span class="eyebrow" style="margin-block-end:12px;">Studio · Fine Design</span>
       <h1>כניסה לניהול</h1>
-      <p>עמית עיצובים — פאנל ניהול הזמנות</p>
+      <p>פאנל הניהול של עמית — כניסה מאובטחת</p>
       <label for="admin-password" class="sr-only">סיסמה</label>
       <input
         type="password"
@@ -25,8 +27,11 @@
         autocomplete="current-password"
         aria-label="סיסמת כניסה"
       >
-      <button class="btn btn--primary" id="login-btn" style="width:100%;">כניסה</button>
+      <button class="btn btn--primary" id="login-btn" style="width:100%;">כניסה לניהול</button>
       <p class="admin-login-error" id="login-error" role="alert">סיסמה שגויה. נסי שוב.</p>
+      <p style="margin-block-start:24px; font-size:0.8125rem; color:var(--ink-mute);">
+        <a href="index.html" style="color:var(--clay); text-decoration:underline; text-underline-offset:3px;">חזרה לאתר</a>
+      </p>
     </div>
   </div>
 
@@ -35,90 +40,146 @@
 
     <header class="admin-header" role="banner">
       <div class="container admin-header-inner">
-        <h1>ניהול הזמנות</h1>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <a href="index.html" class="admin-logout-btn" target="_blank">צפייה באתר</a>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <span class="logo-text logo-text--sm">
+            <span class="logo-fine" style="color:var(--ink);">Fine Design</span>
+            <span class="logo-design">ניהול · עמית</span>
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <a href="index.html" class="admin-logout-btn" target="_blank" rel="noopener">צפייה באתר ↗</a>
           <button class="admin-logout-btn" id="logout-btn">יציאה</button>
         </div>
       </div>
     </header>
 
+    <!-- TABS -->
+    <div class="admin-tabs">
+      <div class="container">
+        <div class="admin-tabs-inner" role="tablist" aria-label="ניווט בניהול">
+          <button class="admin-tab active" role="tab" aria-selected="true" data-tab="invitations">ניהול הזמנות</button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="texts">עריכת טקסטים</button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="theme">עיצוב וצבעים</button>
+        </div>
+      </div>
+    </div>
+
     <main class="admin-main container" id="main-content">
-      <div class="admin-grid">
 
-        <!-- LEFT: ADD INVITATION FORM -->
-        <aside>
-          <div class="admin-card">
-            <h2>הוספת הזמנה חדשה</h2>
+      <!-- ===== TAB: INVITATIONS ===== -->
+      <section class="admin-tab-panel is-active" id="tab-invitations" role="tabpanel">
+        <div class="admin-grid">
 
-            <div class="admin-form-group">
-              <label for="admin-category">קטגוריה</label>
-              <select id="admin-category">
-                <option value="weddings">הזמנות לחתונות</option>
-                <option value="henna">הזמנות לחינה</option>
-                <option value="challah">הזמנות להפרשת חלה</option>
-                <option value="birthdays">הזמנות לימי הולדת ילדים</option>
-                <option value="bar-bat-mitzvah">הזמנות לבר / בת מצווה</option>
-                <option value="brit-milah">הזמנות לברית/בריתה</option>
-                <option value="mimouna">הזמנות למימונה</option>
-                <option value="menus">תפריטים לאירועים</option>
-                <option value="save-the-date">Save the Date</option>
-              </select>
-            </div>
+          <!-- LEFT: ADD INVITATION FORM -->
+          <aside>
+            <div class="admin-card">
+              <h2>הוספת הזמנה חדשה</h2>
 
-            <div class="admin-form-group">
-              <label for="admin-price">מחיר (&#8362;)</label>
-              <input type="number" id="admin-price" placeholder="לדוגמה: 350" min="0" step="1">
-            </div>
+              <div class="admin-form-group">
+                <label for="admin-category">קטגוריה</label>
+                <select id="admin-category">
+                  <option value="weddings">הזמנות לחתונות</option>
+                  <option value="henna">הזמנות לחינה</option>
+                  <option value="challah">הזמנות להפרשת חלה</option>
+                  <option value="birthdays">הזמנות לימי הולדת ילדים</option>
+                  <option value="bar-bat-mitzvah">הזמנות לבר / בת מצווה</option>
+                  <option value="brit-milah">הזמנות לברית/בריתה</option>
+                  <option value="mimouna">הזמנות למימונה</option>
+                  <option value="menus">תפריטים לאירועים</option>
+                  <option value="save-the-date">Save the Date</option>
+                </select>
+              </div>
 
-            <div class="admin-form-group">
-              <label>תמונת ההזמנה</label>
-              <div class="upload-area" id="upload-area">
-                <input
-                  type="file"
-                  id="admin-image-input"
-                  accept="image/*"
-                  aria-label="העלאת תמונת הזמנה"
-                >
-                <div class="upload-area-text">
-                  לחצי כאן או גרירי תמונה לכאן<br>
-                  <span style="font-size:0.75rem;">JPG, PNG, WEBP — עד 5MB</span>
+              <div class="admin-form-group">
+                <label for="admin-price">מחיר (&#8362;)</label>
+                <input type="number" id="admin-price" placeholder="לדוגמה: 350" min="0" step="1">
+              </div>
+
+              <div class="admin-form-group">
+                <label>תמונת ההזמנה</label>
+                <div class="upload-area" id="upload-area">
+                  <input type="file" id="admin-image-input" accept="image/*" aria-label="העלאת תמונת הזמנה">
+                  <div class="upload-area-text">
+                    <strong style="color:var(--ink); display:block; margin-block-end:6px;">לחצי או גררי תמונה לכאן</strong>
+                    <span style="font-size:0.8125rem;">JPG, PNG, WEBP — עד 5MB</span>
+                  </div>
+                  <img id="upload-preview" class="upload-preview" alt="תצוגה מקדימה של ההזמנה">
                 </div>
-                <img id="upload-preview" class="upload-preview" alt="תצוגה מקדימה של ההזמנה">
+              </div>
+
+              <button class="admin-save-btn" id="admin-save-btn" disabled>
+                הוספת הזמנה
+              </button>
+            </div>
+
+            <div class="admin-card" style="margin-block-start:16px;">
+              <h2>טיפים מהירים</h2>
+              <ul style="display:flex; flex-direction:column; gap:8px; font-size:0.9375rem; color:var(--ink-soft); list-style:none; padding:0;">
+                <li>· התמונות נשמרות ב-IndexedDB של הדפדפן ומופיעות אוטומטית באתר.</li>
+                <li>· אפשר לערוך מחיר ישירות בכרטיס ולשמור באנטר.</li>
+                <li>· למחיקת הזמנה — לחצי על ה-× בכרטיס.</li>
+                <li>· הנגישות נשמרת לפי תקן ישראלי 5568.</li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- RIGHT: INVITATIONS LIST -->
+          <div>
+            <div class="admin-card">
+              <h2>כל ההזמנות <span style="color:var(--ink-mute); font-weight:500;">(<span id="inv-count">0</span>)</span></h2>
+
+              <div class="admin-filter" role="group" aria-label="סינון לפי קטגוריה">
+                <button class="admin-filter-btn active" data-filter="all">הכל</button>
+                <button class="admin-filter-btn" data-filter="weddings">חתונות</button>
+                <button class="admin-filter-btn" data-filter="henna">חינה</button>
+                <button class="admin-filter-btn" data-filter="challah">הפרשת חלה</button>
+                <button class="admin-filter-btn" data-filter="birthdays">ימי הולדת</button>
+                <button class="admin-filter-btn" data-filter="bar-bat-mitzvah">בר/בת מצווה</button>
+                <button class="admin-filter-btn" data-filter="brit-milah">ברית</button>
+                <button class="admin-filter-btn" data-filter="mimouna">מימונה</button>
+                <button class="admin-filter-btn" data-filter="menus">תפריטים</button>
+                <button class="admin-filter-btn" data-filter="save-the-date">Save the Date</button>
+              </div>
+
+              <div class="admin-invitations-grid" id="admin-grid">
+                <div class="admin-empty">עדיין אין הזמנות. הוסיפי את הראשונה!</div>
               </div>
             </div>
-
-            <button class="admin-save-btn" id="admin-save-btn" disabled>
-              הוספת הזמנה
-            </button>
           </div>
-        </aside>
 
-        <!-- RIGHT: INVITATIONS LIST -->
-        <div>
-          <div class="admin-card">
-            <h2>כל ההזמנות (<span id="inv-count">0</span>)</h2>
+        </div>
+      </section>
 
-            <div class="admin-filter" role="group" aria-label="סינון לפי קטגוריה">
-              <button class="admin-filter-btn active" data-filter="all">הכל</button>
-              <button class="admin-filter-btn" data-filter="weddings">חתונות</button>
-              <button class="admin-filter-btn" data-filter="henna">חינה</button>
-              <button class="admin-filter-btn" data-filter="challah">הפרשת חלה</button>
-              <button class="admin-filter-btn" data-filter="birthdays">ימי הולדת</button>
-              <button class="admin-filter-btn" data-filter="bar-bat-mitzvah">בר/בת מצווה</button>
-              <button class="admin-filter-btn" data-filter="brit-milah">ברית</button>
-              <button class="admin-filter-btn" data-filter="mimouna">מימונה</button>
-              <button class="admin-filter-btn" data-filter="menus">תפריטים</button>
-              <button class="admin-filter-btn" data-filter="save-the-date">STD</button>
-            </div>
-
-            <div class="admin-invitations-grid" id="admin-grid">
-              <div class="admin-empty">עדיין אין הזמנות. הוסיפי את הראשונה!</div>
-            </div>
+      <!-- ===== TAB: TEXTS ===== -->
+      <section class="admin-tab-panel" id="tab-texts" role="tabpanel" hidden>
+        <div class="admin-card">
+          <h2>עריכת טקסטים באתר</h2>
+          <p style="font-size:0.9375rem; color:var(--ink-soft); margin-block-end:24px;">
+            השינויים נשמרים מיד ויחולו בכל פתיחה של דף הבית. ההזמנות והדפים הפנימיים לא מושפעים.
+          </p>
+          <div id="texts-form" class="settings-form"></div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-block-start:24px;">
+            <button class="admin-save-btn" id="texts-save-btn" style="flex:1;">שמירת שינויים</button>
+            <button class="admin-logout-btn" id="texts-reset-btn">איפוס לברירת מחדל</button>
           </div>
         </div>
+      </section>
 
-      </div>
+      <!-- ===== TAB: THEME ===== -->
+      <section class="admin-tab-panel" id="tab-theme" role="tabpanel" hidden>
+        <div class="admin-card">
+          <h2>עיצוב וצבעים</h2>
+          <p style="font-size:0.9375rem; color:var(--ink-soft); margin-block-end:24px;">
+            צבעים, גופנים וגודל בסיס של האתר. רענון עמוד הבית יחיל את השינויים מיד.
+          </p>
+          <div id="theme-form" class="settings-form"></div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-block-start:24px;">
+            <button class="admin-save-btn" id="theme-save-btn" style="flex:1;">שמירת שינויים</button>
+            <button class="admin-logout-btn" id="theme-reset-btn">איפוס לברירת מחדל</button>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -127,6 +188,7 @@
 
   <script src="js/accessibility.js"></script>
   <script src="js/db.js"></script>
+  <script src="js/site-settings.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

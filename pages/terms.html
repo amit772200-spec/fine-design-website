@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="תנאי שימוש באתר עמית עיצובים — הזמנות לאירועים.">
-  <title>תנאי שימוש | עמית עיצובים</title>
+  <meta name="description" content="תנאי שימוש באתר Fine Design — הזמנות לאירועים.">
+  <title>תנאי שימוש | Fine Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/accessibility.css">
 </head>
@@ -17,46 +17,62 @@
 
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="../index.html" class="logo" aria-label="עמית עיצובים - דף הבית">
-        <span class="logo-text"><span class="logo-fine">Fine</span><span class="logo-design">Design</span></span>
-      </a>
-      <nav class="nav-desktop" aria-label="ניווט ראשי">
-        <ul>
-          <li><a href="../index.html">דף הבית</a></li>
-          <li><a href="weddings.html">חתונות</a></li>
-          <li><a href="henna.html">חינה</a></li>
-          <li><a href="challah.html">הפרשת חלה</a></li>
-          <li><a href="birthdays.html">ימי הולדת</a></li>
-          <li><a href="bar-bat-mitzvah.html">בר / בת מצווה</a></li>
-          <li><a href="brit-milah.html">ברית/בריתה</a></li>
-          <li><a href="mimouna.html">מימונה</a></li>
-          <li><a href="menus.html">תפריטים</a></li>
-          <li><a href="save-the-date.html">Save the Date</a></li>
-        </ul>
-      </nav>
-      <button id="hamburger-btn" class="hamburger-btn" aria-label="פתח תפריט ניווט" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div class="header-row-brand">
+        <span class="header-rule header-rule--start" aria-hidden="true"></span>
+        <a href="../index.html" class="logo" aria-label="Fine Design — דף הבית">
+          <span class="logo-text">
+            <span class="logo-fine">Fine Design</span>
+            <span class="logo-design">Studio · עמית</span>
+          </span>
+        </a>
+        <span class="header-rule header-rule--end" aria-hidden="true"></span>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="פתח תפריט ניווט" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="header-row-nav">
+        <nav class="nav-desktop" aria-label="ניווט ראשי">
+          <ul>
+            <li><a href="../index.html">דף הבית</a></li>
+            <li><a href="weddings.html">חתונות</a></li>
+            <li><a href="henna.html">חינה</a></li>
+            <li><a href="challah.html">הפרשת חלה</a></li>
+            <li><a href="birthdays.html">ימי הולדת</a></li>
+            <li><a href="bar-bat-mitzvah.html">בר / בת מצווה</a></li>
+            <li><a href="brit-milah.html">ברית/בריתה</a></li>
+            <li><a href="mimouna.html">מימונה</a></li>
+            <li><a href="menus.html">תפריטים</a></li>
+            <li><a href="save-the-date.html">Save the Date</a></li>
+          </ul>
+        </nav>
+      </div>
+
     </div>
   </header>
 
   <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="תפריט ניווט">
     <div class="mobile-menu-header">
-      <span class="logo-text logo-text--sm"><span class="logo-fine">Fine</span><span class="logo-design">Design</span></span>
+      <span class="logo-text logo-text--sm">
+        <span class="logo-fine">Fine Design</span>
+        <span class="logo-design">Studio · עמית</span>
+      </span>
       <button id="mobile-menu-close" class="mobile-menu-close" aria-label="סגור תפריט">&#215;</button>
     </div>
     <nav class="mobile-menu-nav" aria-label="ניווט ראשי — תפריט נייד">
       <ul>
-        <li><a href="../index.html"><span class="menu-number" aria-hidden="true">1.</span> דף הבית</a></li>
-        <li><a href="weddings.html"><span class="menu-number" aria-hidden="true">2.</span> הזמנות לחתונות</a></li>
-        <li><a href="henna.html"><span class="menu-number" aria-hidden="true">3.</span> הזמנות לחינה</a></li>
-        <li><a href="challah.html"><span class="menu-number" aria-hidden="true">4.</span> הזמנות להפרשת חלה</a></li>
-        <li><a href="birthdays.html"><span class="menu-number" aria-hidden="true">5.</span> הזמנות לימי הולדת ילדים</a></li>
-        <li><a href="bar-bat-mitzvah.html"><span class="menu-number" aria-hidden="true">6.</span> הזמנות לבר / בת מצווה</a></li>
-        <li><a href="brit-milah.html"><span class="menu-number" aria-hidden="true">7.</span> הזמנות לברית/בריתה</a></li>
-        <li><a href="mimouna.html"><span class="menu-number" aria-hidden="true">8.</span> הזמנות למימונה</a></li>
-        <li><a href="menus.html"><span class="menu-number" aria-hidden="true">9.</span> תפריטים לאירועים</a></li>
-        <li><a href="save-the-date.html"><span class="menu-number" aria-hidden="true">10.</span> Save the Date</a></li>
+        <li><a href="../index.html"><span class="menu-number" aria-hidden="true">01</span> דף הבית</a></li>
+        <li><a href="weddings.html"><span class="menu-number" aria-hidden="true">02</span> הזמנות לחתונות</a></li>
+        <li><a href="henna.html"><span class="menu-number" aria-hidden="true">03</span> הזמנות לחינה</a></li>
+        <li><a href="challah.html"><span class="menu-number" aria-hidden="true">04</span> הזמנות להפרשת חלה</a></li>
+        <li><a href="birthdays.html"><span class="menu-number" aria-hidden="true">05</span> הזמנות לימי הולדת ילדים</a></li>
+        <li><a href="bar-bat-mitzvah.html"><span class="menu-number" aria-hidden="true">06</span> הזמנות לבר / בת מצווה</a></li>
+        <li><a href="brit-milah.html"><span class="menu-number" aria-hidden="true">07</span> הזמנות לברית/בריתה</a></li>
+        <li><a href="mimouna.html"><span class="menu-number" aria-hidden="true">08</span> הזמנות למימונה</a></li>
+        <li><a href="menus.html"><span class="menu-number" aria-hidden="true">09</span> תפריטים לאירועים</a></li>
+        <li><a href="save-the-date.html"><span class="menu-number" aria-hidden="true">10</span> Save the Date</a></li>
       </ul>
     </nav>
   </div>
@@ -74,84 +90,134 @@
     <div class="container">
       <div class="legal-content">
 
+        <span class="eyebrow">Terms · תנאי שימוש</span>
         <h1>תנאי שימוש</h1>
-        <p class="legal-meta">עודכן לאחרונה: מאי 2025</p>
+        <p class="legal-meta">תאריך עדכון אחרון: מאי 2026</p>
 
         <h2>1. כללי</h2>
         <p>
-          ברוכים הבאים לאתר עמית עיצובים. השימוש באתר זה מהווה הסכמה לתנאי השימוש
-          המפורטים להלן. אנא קראו אותם בעיון לפני השימוש בשירות. אם אינכם מסכימים
-          לאיזה מהתנאים, אנא הימנעו משימוש באתר.
+          ברוכים הבאים לאתר Fine Design (להלן: "האתר", "השירות", "אנו").
+          השימוש באתר ובשירותים המוצעים בו כפוף לתנאים המפורטים להלן.
+          השימוש באתר מהווה הסכמה לתנאים אלו; אם אינכם מסכימים, אנא הימנעו משימוש.
+        </p>
+        <p>
+          תנאי השימוש נכתבו בלשון נקבה לצורך נוחות, אך מיועדים לכל מין וזהות.
         </p>
 
         <h2>2. השירות המוצע</h2>
         <p>
-          עמית עיצובים מציעה שירותי עיצוב הזמנות לאירועים שונים, לרבות: חתונות, חינה,
-          הפרשת חלה, ימי הולדת, בר ובת מצווה, ברית מילה, מימונה, תפריטים לאירועים
-          וכרטיסי Save the Date.
+          Fine Design הוא סטודיו בוטיק לעיצוב הזמנות לאירועים, לרבות: חתונות,
+          חינה, הפרשת חלה, ימי הולדת ילדים, בר/בת מצווה, ברית מילה / בריתה,
+          מימונה, תפריטים לאירועים וכרטיסי Save the Date.
         </p>
         <p>
-          השירות כולל עיצוב גרפי אישי בהתאם לפרטים שמסרתם, ומשלוח הקובץ הסופי
-          לאחר אישורכם.
+          השירות כולל עיצוב גרפי אישי בהתאם לפרטים שמסרת, אספקת קובץ דיגיטלי
+          מוכן לשליחה ב-WhatsApp וקובץ PDF להדפסה עצמאית.
         </p>
 
-        <h2>3. הגשת הזמנה</h2>
+        <h2>3. הזמנת השירות</h2>
         <ul>
-          <li>ההזמנה תחל עם פנייתכם הראשונית ומסירת פרטי האירוע.</li>
-          <li>לאחר קבלת הטיוטה הראשונה, תוכלו לבקש עד שני סבבי תיקונים ללא תוספת תשלום.</li>
-          <li>תיקונים מהותיים מעבר לשני הסבבים עשויים להיות כרוכים בתוספת עלות.</li>
-          <li>לאחר אישורכם הסופי על העיצוב, לא ניתן יהיה לבצע שינויים נוספים ללא תשלום.</li>
+          <li>הזמנה תתחיל לאחר תיאום ראשוני בכתב או בעל-פה והעברת פרטי האירוע.</li>
+          <li>לאחר טיוטת העיצוב הראשונה, תקבלי עד שני סבבי תיקונים ללא תוספת תשלום.</li>
+          <li>תיקונים מהותיים נוספים מעבר לשני הסבבים — בתיאום מראש ובתוספת עלות.</li>
+          <li>לאחר מתן אישור סופי על העיצוב, שינויים נוספים מחויבים בתוספת תשלום.</li>
         </ul>
 
-        <h2>4. תשלום</h2>
+        <h2>4. מחירים ותשלום</h2>
         <ul>
-          <li>המחיר לכל הזמנה יוסכם מראש בשיחה עם הלקוח.</li>
-          <li>התשלום מתבצע לפני קבלת הקובץ הסופי, אלא אם הוסכם אחרת.</li>
-          <li>אמצעי התשלום יוסכמו ישירות בין הצדדים.</li>
+          <li>המחיר לכל הזמנה מסוכם מראש ומועבר בכתב לפני תחילת העבודה.</li>
+          <li>התשלום מתבצע בהעברה בנקאית, ב-Bit, או באמצעי שיוסכם בין הצדדים.</li>
+          <li>במידה ותשלום נדרש מראש (בעיקר עבור הזמנות בלחץ זמן), הדבר יצוין מראש.</li>
+          <li>אם נדרשת חשבונית מס/קבלה — נשמח לספק אותה.</li>
         </ul>
 
-        <h2>5. זכויות יוצרים</h2>
+        <h2>5. ביטול ומדיניות החזרים</h2>
         <p>
-          כל העיצובים המוצגים באתר הם קניינה הבלעדי של עמית עיצובים ומוגנים בזכויות יוצרים.
-          אין להעתיק, לשכפל, להפיץ או לעשות שימוש בעיצובים אלו ללא אישור מפורש בכתב.
+          בהתאם לחוק הגנת הצרכן, התשמ"א-1981, ולתקנותיו (לרבות תקנות הגנת
+          הצרכן (ביטול עסקה), התשע"א-2010):
         </p>
-        <p>
-          לאחר רכישת עיצוב, הלקוח מקבל רישיון שימוש אישי בעיצוב לצרכי האירוע הספציפי בלבד.
-          אין להשתמש בעיצוב לצרכים מסחריים או להפצה מחודשת.
-        </p>
-
-        <h2>6. ביטול והחזרות</h2>
         <ul>
-          <li>ניתן לבטל הזמנה לפני תחילת העיצוב ולקבל החזר מלא.</li>
-          <li>לאחר שנשלחה הטיוטה הראשונה, יחויב סכום חלקי בגין העבודה שבוצעה.</li>
-          <li>לאחר אישור העיצוב הסופי ומשלוח הקובץ, לא ניתן יהיה להחזיר את התשלום.</li>
+          <li>
+            ביטול לפני תחילת עבודת העיצוב — החזר מלא, פחות 5% מהמחיר או 100 ₪
+            (הנמוך מביניהם), כקבוע בחוק.
+          </li>
+          <li>
+            ביטול לאחר אספקת טיוטה ראשונה ולפני אישור סופי — תחויבי בעלות
+            יחסית של העבודה שכבר בוצעה (לרוב 30%-60% מהמחיר).
+          </li>
+          <li>
+            ביטול לאחר אישור סופי ומסירת הקובץ — לא ניתן להחזיר את התשלום,
+            שכן השירות הושלם והקובץ הותאם אישית.
+          </li>
+          <li>
+            בקשת ביטול — תועבר במייל או ב-WhatsApp בכתב.
+          </li>
         </ul>
 
-        <h2>7. אחריות</h2>
+        <h2>6. קניין רוחני וזכויות יוצרים</h2>
         <p>
-          האתר מסופק "כפי שהוא" (as is). עמית עיצובים לא תהיה אחראית לנזקים ישירים
-          או עקיפים הנובעים משימוש באתר. אנו לא אחראים על תוכן אתרים חיצוניים
-          המקושרים מהאתר שלנו.
+          כל העיצובים המוצגים באתר ובקובץ ששולם בגינו הם קניינה הרוחני
+          הבלעדי של Fine Design ומוגנים בחוק זכות יוצרים, התשס"ח-2007.
+        </p>
+        <p>
+          לאחר תשלום והעברת הקובץ הסופי, הלקוחה מקבלת רישיון שימוש אישי
+          ולא-מסחרי בעיצוב, אך ורק לאירוע ספציפי שלשמו הוזמן. אין להעתיק,
+          לערוך, לשנות, להפיץ או למכור את העיצוב מחדש, ואין להציגו כעבודה
+          של מעצב אחר.
         </p>
 
-        <h2>8. שינויים בתנאי השימוש</h2>
+        <h2>7. אחריות והגבלת אחריות</h2>
         <p>
-          עמית עיצובים שומרת את הזכות לעדכן תנאי שימוש אלו בכל עת. שינויים מהותיים
-          יפורסמו באתר. המשך שימוש באתר לאחר פרסום שינויים מהווה הסכמה לתנאים המעודכנים.
+          השירות והאתר מסופקים "כפי שהם" (AS IS).
+          Fine Design תפעל במאמצים סבירים לדיוק, איכות ועמידה בלוחות זמנים,
+          אך לא תהיה אחראית ל:
+        </p>
+        <ul>
+          <li>נזקים עקיפים, לרבות אובדן רווח עסקי, שעות עבודה או הוצאות אחרות</li>
+          <li>תקלות באתרי צד שלישי המקושרים מהאתר (לדוגמה WhatsApp)</li>
+          <li>איכות הדפסה אצל ספקים חיצוניים שהלקוחה בחרה לעבוד איתם</li>
+        </ul>
+        <p>
+          האחריות המקסימלית של Fine Design תוגבל בכל מקרה לסכום ששולם בפועל
+          על-ידי הלקוחה עבור השירות הספציפי.
         </p>
 
-        <h2>9. הדין החל</h2>
+        <h2>8. פרטיות</h2>
         <p>
-          תנאי שימוש אלו כפופים לדין הישראלי. לכל סכסוך הנוגע לשימוש באתר, תהיה
-          סמכות השיפוט הבלעדית לבתי המשפט המוסמכים בישראל.
+          השימוש באתר ומסירת פרטים אישיים כפופים ל<a href="privacy.html">מדיניות הפרטיות</a>
+          המהווה חלק בלתי נפרד מתנאי שימוש אלו.
         </p>
 
-        <h2>10. יצירת קשר</h2>
+        <h2>9. נגישות</h2>
+        <p>
+          האתר עומד בתקנות שוויון זכויות לאנשים עם מוגבלות
+          (התאמות נגישות לשירות), התשע"ג-2013, ובתקן הישראלי 5568.
+          לפרטים מלאים ולפנייה בנושאי נגישות, ראו את
+          <a href="accessibility.html">הצהרת הנגישות</a>.
+        </p>
+
+        <h2>10. שינויים בתנאי השימוש</h2>
+        <p>
+          Fine Design רשאית לעדכן תנאי שימוש אלו מעת לעת. שינויים מהותיים
+          יפורסמו באתר ויכנסו לתוקף 14 ימים לאחר פרסומם. המשך שימוש באתר
+          לאחר כניסת השינויים לתוקף מהווה הסכמה לתנאים המעודכנים.
+        </p>
+
+        <h2>11. סמכות שיפוט ודין חל</h2>
+        <p>
+          תנאי שימוש אלו כפופים אך ורק לדין הישראלי. סמכות השיפוט הבלעדית
+          לדון בכל סכסוך הנובע מהשימוש באתר או מהשירות נתונה לבתי המשפט
+          המוסמכים במחוז תל-אביב, ישראל.
+        </p>
+
+        <h2>12. יצירת קשר</h2>
         <p>
           לכל שאלה הנוגעת לתנאי השימוש:
-          <br>מייל: <a href="mailto:amit@example.com">amit@example.com</a>
-          <br>WhatsApp: <a href="https://wa.me/972505900090" target="_blank" rel="noopener noreferrer">שלחי הודעה</a>
         </p>
+        <ul>
+          <li><strong>דוא"ל:</strong> <a href="mailto:amit@example.com">amit@example.com</a></li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/972505900090" target="_blank" rel="noopener noreferrer">050-5900090</a></li>
+        </ul>
 
       </div>
     </div>
@@ -160,13 +226,21 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-bottom">
-        <p>כל הזכויות שמורות &copy; 2025 עמית עיצובים</p>
-        <a href="../index.html" class="accessibility-statement-link">חזרה לדף הבית</a>
+        <p>&copy; 2026 Fine Design · כל הזכויות שמורות</p>
+        <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:center;">
+          <a href="../index.html" class="accessibility-statement-link">חזרה לדף הבית</a>
+          <span aria-hidden="true" style="opacity:0.3;">·</span>
+          <button type="button" class="accessibility-statement-link" data-cookie-settings style="background:none;border:none;padding:0;font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">ניהול עוגיות</button>
+          <span aria-hidden="true" style="opacity:0.3;">·</span>
+          <a href="../admin.html" class="accessibility-statement-link" style="opacity:0.55;" aria-label="כניסה לפאנל ניהול">ניהול</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  <script src="../js/site-settings.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/accessibility.js"></script>
+  <script src="../js/cookie-banner.js"></script>
 </body>
 </html>

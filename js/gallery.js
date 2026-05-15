@@ -2,6 +2,9 @@
 
 /* =========================================================
    GALLERY LOADER — reads from IndexedDB via db.js
+   Supports multiple grids on the same page, each with:
+     [data-gallery-category="all" | "weddings" | "henna" | ...]
+     [data-gallery-limit="6"]  (optional cap)
    ========================================================= */
 
 function buildCard(inv, basePath) {
@@ -23,7 +26,7 @@ function buildCard(inv, basePath) {
   } else {
     const placeholder = document.createElement('div');
     placeholder.className = 'invitation-card-img-placeholder';
-    placeholder.textContent = 'תמונה';
+    placeholder.textContent = categoryLabel(inv.category);
     imgLink.appendChild(placeholder);
   }
 
@@ -48,20 +51,13 @@ function buildCard(inv, basePath) {
   return card;
 }
 
-function renderGallery(all, containerId, category, basePath) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  const items = category === 'all'
-    ? all
-    : all.filter(inv => inv.category === category);
-
+function renderInto(container, items, basePath, emptyHTML) {
   container.innerHTML = '';
 
   if (items.length === 0) {
     const empty = document.createElement('div');
     empty.className = 'gallery-empty';
-    empty.textContent = 'עוד לא הועלו הזמנות לקטגוריה זו.';
+    empty.innerHTML = emptyHTML || 'עוד לא הועלו הזמנות לקטגוריה זו.';
     container.appendChild(empty);
     return;
   }
@@ -96,14 +92,30 @@ function escHtml(str) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const grid = document.querySelector('[data-gallery-category]');
-  if (!grid) return;
-  const category = grid.dataset.galleryCategory;
+  const grids = document.querySelectorAll('[data-gallery-category]');
+  if (!grids.length) return;
   const basePath = getBasePath();
+
+  let all = [];
   try {
-    const all = await dbLoadAll();
-    renderGallery(all, grid.id, category, basePath);
+    all = await dbLoadAll();
   } catch (err) {
     console.error('Gallery load error:', err);
+    return;
   }
+
+  grids.forEach(grid => {
+    const category = grid.dataset.galleryCategory;
+    const limit = parseInt(grid.dataset.galleryLimit || '0', 10);
+    let items = category === 'all'
+      ? all
+      : all.filter(inv => inv.category === category);
+    if (limit > 0) items = items.slice(0, limit);
+
+    const empty = grid.dataset.galleryEmpty ||
+      'הסטודיו רק התחיל לפרסם דוגמאות — בקרוב יופיעו כאן הזמנות. ' +
+      '<a href="' + basePath + 'pages/weddings.html">לכל הקטגוריות</a>';
+
+    renderInto(grid, items, basePath, empty);
+  });
 });

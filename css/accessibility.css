@@ -2,19 +2,24 @@
    ACCESSIBILITY WIDGET — Israeli Standard 5568
    ========================================================= */
 
-/* --- Widget Toggle Button --- */
+/* --- Widget Toggle Button ---
+   Compliant with Israeli Accessibility Reg. 35 + WCAG 2.1 AA:
+   - 56×56 (≥ 44×44 minimum)
+   - Contrast white-on-ink ≈ 18:1 (well above 4.5:1)
+   - Fixed position, persistent across pages
+   - aria-label provided by JS                                  */
 .a11y-widget-btn {
   position: fixed;
   bottom: 24px;
   inset-inline-start: 24px;
   z-index: 9000;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background-color: #b8955a;
-  color: #fff;
-  border: 3px solid #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+  background-color: #1a1612;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.30);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +28,7 @@
   letter-spacing: 0.02em;
   cursor: pointer;
   font-family: 'Heebo', Arial, sans-serif;
-  transition: background-color 0.2s, transform 0.2s;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
   line-height: 1.1;
   text-align: center;
   padding: 0;
@@ -31,8 +36,14 @@
 
 .a11y-widget-btn:hover,
 .a11y-widget-btn:focus-visible {
-  background-color: #9a7a44;
+  background-color: #c9684e;
   transform: scale(1.07);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+.a11y-widget-btn:focus-visible {
+  outline: 3px solid #c9684e;
+  outline-offset: 4px;
 }
 
 /* --- Panel --- */
@@ -43,7 +54,7 @@
   z-index: 8999;
   width: 280px;
   background-color: #fff;
-  border: 1px solid #e8dfd0;
+  border: 1px solid #e8ddd0;
   border-radius: 4px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.15);
   font-family: 'Heebo', Arial, sans-serif;
@@ -56,7 +67,7 @@
 }
 
 .a11y-panel-header {
-  background-color: #b8955a;
+  background-color: #c9684e;
   color: #fff;
   padding: 12px 16px;
   border-radius: 4px 4px 0 0;
@@ -103,11 +114,11 @@
   width: 100%;
   padding: 10px 16px;
   font-size: 0.875rem;
-  color: #2c2418;
+  color: #1a1612;
   font-family: 'Heebo', Arial, sans-serif;
   background: none;
   border: none;
-  border-block-end: 1px solid #f3ede4;
+  border-block-end: 1px solid #f3ebe0;
   cursor: pointer;
   text-align: start;
   transition: background-color 0.15s;
@@ -115,12 +126,12 @@
 
 .a11y-control-btn:hover,
 .a11y-control-btn:focus-visible {
-  background-color: #faf8f4;
+  background-color: #fbf7f2;
 }
 
 .a11y-control-btn.is-active {
-  background-color: #f3ede4;
-  color: #9a7a44;
+  background-color: #f3ebe0;
+  color: #a44e36;
   font-weight: 600;
 }
 
@@ -128,7 +139,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: #e8dfd0;
+  background-color: #e8ddd0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,7 +149,7 @@
 }
 
 .a11y-control-btn.is-active .a11y-control-icon {
-  background-color: #b8955a;
+  background-color: #c9684e;
   color: #fff;
 }
 
@@ -149,9 +160,9 @@
   padding: 9px;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #7a6e5f;
-  background-color: #f3ede4;
-  border: 1px solid #e8dfd0;
+  color: #544a3e;
+  background-color: #f3ebe0;
+  border: 1px solid #e8ddd0;
   border-radius: 2px;
   cursor: pointer;
   font-family: 'Heebo', Arial, sans-serif;
@@ -160,15 +171,15 @@
 
 .a11y-reset-btn:hover,
 .a11y-reset-btn:focus-visible {
-  background-color: #e8dfd0;
-  color: #2c2418;
+  background-color: #e8ddd0;
+  color: #1a1612;
 }
 
 .a11y-panel-footer {
   padding: 8px 16px 12px;
   font-size: 0.75rem;
-  color: #7a6e5f;
-  border-block-start: 1px solid #e8dfd0;
+  color: #544a3e;
+  border-block-start: 1px solid #e8ddd0;
 }
 
 /* =========================================================
@@ -283,26 +294,26 @@ html.a11y-keyboard-focus *:focus {
    ACCESSIBILITY STATEMENT (in-page section)
    ========================================================= */
 .a11y-statement {
-  background-color: #faf8f4;
-  border: 1px solid #e8dfd0;
+  background-color: #fbf7f2;
+  border: 1px solid #e8ddd0;
   border-radius: 2px;
   padding: 24px;
   max-width: 760px;
   margin-inline: auto;
   font-size: 0.875rem;
-  color: #7a6e5f;
+  color: #544a3e;
   line-height: 1.75;
 }
 
 .a11y-statement h2 {
   font-size: 1rem;
   font-weight: 700;
-  color: #2c2418;
+  color: #1a1612;
   margin-block-end: 8px;
 }
 
 .a11y-statement a {
-  color: #b8955a;
+  color: #c9684e;
   text-decoration: underline;
   text-underline-offset: 2px;
 }

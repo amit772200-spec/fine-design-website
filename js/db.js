@@ -7,7 +7,7 @@
    ========================================================= */
 
 const DB_NAME    = 'amit_design_db';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const STORE      = 'invitations';
 
 let _dbPromise = null;
@@ -21,6 +21,9 @@ function openDB() {
       const db = e.target.result;
       if (!db.objectStoreNames.contains(STORE)) {
         db.createObjectStore(STORE, { keyPath: 'id' });
+      }
+      if (!db.objectStoreNames.contains('settings')) {
+        db.createObjectStore('settings', { keyPath: 'key' });
       }
     };
 

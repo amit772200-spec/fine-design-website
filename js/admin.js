@@ -1,8 +1,8 @@
 'use strict';
 
 /* =========================================================
-   ADMIN PANEL — עמית עיצובים
-   Storage: IndexedDB via db.js (no size limit)
+   ADMIN PANEL — Fine Design
+   Storage: IndexedDB via db.js + site-settings.js
    Auth: simple password check (client-side only)
    ========================================================= */
 
@@ -20,7 +20,6 @@ const CATEGORY_LABELS = {
   'save-the-date':   'Save the Date',
 };
 
-/* --- Toast --- */
 function showToast(msg) {
   const el = document.getElementById('toast');
   el.textContent = msg;
@@ -28,7 +27,9 @@ function showToast(msg) {
   setTimeout(() => el.classList.remove('show'), 2800);
 }
 
-/* --- Auth --- */
+/* ===========================================================
+   AUTH
+   =========================================================== */
 let currentFilter = 'all';
 
 function login() {
@@ -37,6 +38,9 @@ function login() {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-panel').style.display = 'block';
     renderGrid(currentFilter);
+    /* Lazy-build settings forms */
+    buildSettingsForm('texts-form', /\b(hero|categories|about|cta|whatsapp|contact|footer)_/);
+    buildSettingsForm('theme-form', /^theme_/);
   } else {
     document.getElementById('login-error').style.display = 'block';
     document.getElementById('admin-password').value = '';
@@ -54,7 +58,28 @@ document.getElementById('logout-btn').addEventListener('click', () => {
   document.getElementById('admin-password').value = '';
 });
 
-/* --- Image compression + upload --- */
+/* ===========================================================
+   TABS
+   =========================================================== */
+document.querySelectorAll('.admin-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    document.querySelectorAll('.admin-tab').forEach(t => {
+      t.classList.toggle('active', t === tab);
+      t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+    });
+    document.querySelectorAll('.admin-tab-panel').forEach(panel => {
+      const match = panel.id === 'tab-' + target;
+      panel.classList.toggle('is-active', match);
+      if (match) panel.removeAttribute('hidden');
+      else panel.setAttribute('hidden', '');
+    });
+  });
+});
+
+/* ===========================================================
+   INVITATIONS — image compression + upload
+   =========================================================== */
 let pendingImageData = null;
 
 const imageInput = document.getElementById('admin-image-input');
@@ -103,8 +128,7 @@ uploadArea.addEventListener('drop', e => {
   handleImageFile(e.dataTransfer.files[0]);
 });
 
-/* --- Save new invitation --- */
-document.getElementById('admin-save-btn').addEventListener('click', async () => {
+saveBtn.addEventListener('click', async () => {
   if (!pendingImageData) return;
 
   const category   = document.getElementById('admin-category').value;
@@ -143,7 +167,6 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
   showToast('ההזמנה נוספה בהצלחה!');
 });
 
-/* --- Render grid --- */
 async function renderGrid(filter) {
   const grid = document.getElementById('admin-grid');
   grid.innerHTML = '<div class="admin-empty">טוען...</div>';
@@ -200,7 +223,7 @@ async function renderGrid(filter) {
     delBtn.className = 'admin-delete-btn';
     delBtn.title = 'מחק הזמנה';
     delBtn.setAttribute('aria-label', 'מחיקת הזמנה');
-    delBtn.textContent = 'x';
+    delBtn.textContent = '×';
     delBtn.addEventListener('click', async () => {
       if (confirm('למחוק הזמנה זו?')) {
         await dbDelete(inv.id);
@@ -216,7 +239,6 @@ async function renderGrid(filter) {
   });
 }
 
-/* --- Filter buttons --- */
 document.querySelectorAll('.admin-filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.admin-filter-btn').forEach(b => b.classList.remove('active'));
@@ -225,3 +247,96 @@ document.querySelectorAll('.admin-filter-btn').forEach(btn => {
     renderGrid(currentFilter);
   });
 });
+
+/* ===========================================================
+   SETTINGS — build forms dynamically from schema
+   =========================================================== */
+async function buildSettingsForm(containerId, filterRegex) {
+  const container = document.getElementById(containerId);
+  if (!container || container.dataset.built === '1') return;
+  container.dataset.built = '1';
+
+  const schema  = window.SiteSettings.schema;
+  const current = await window.SiteSettings.loadAll();
+
+  Object.keys(schema).forEach(key => {
+    if (!filterRegex.test(key)) return;
+    const meta = schema[key];
+    const value = current[key] != null ? current[key] : meta.default;
+
+    const row = document.createElement('div');
+    row.className = 'settings-row';
+
+    const label = document.createElement('label');
+    label.textContent = meta.label;
+    label.setAttribute('for', 'set-' + key);
+
+    let input;
+    if (meta.type === 'textarea' || meta.type === 'html') {
+      input = document.createElement('textarea');
+      input.rows = meta.type === 'html' ? 4 : 3;
+      input.value = value;
+    } else if (meta.type === 'select') {
+      input = document.createElement('select');
+      meta.options.forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt; o.textContent = opt;
+        if (opt === value) o.selected = true;
+        input.appendChild(o);
+      });
+    } else if (meta.type === 'color') {
+      input = document.createElement('input');
+      input.type = 'color';
+      input.value = value;
+    } else if (meta.type === 'number') {
+      input = document.createElement('input');
+      input.type = 'number';
+      input.value = value;
+      if (meta.min != null) input.min = meta.min;
+      if (meta.max != null) input.max = meta.max;
+    } else {
+      input = document.createElement('input');
+      input.type = 'text';
+      input.value = value;
+    }
+    input.id = 'set-' + key;
+    input.dataset.settingKey = key;
+    input.dataset.settingType = meta.type;
+    input.dataset.settingDefault = meta.default;
+
+    row.appendChild(label);
+    row.appendChild(input);
+    container.appendChild(row);
+  });
+}
+
+async function saveSettingsFromForm(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const inputs = container.querySelectorAll('[data-setting-key]');
+  for (const input of inputs) {
+    const key = input.dataset.settingKey;
+    let v = input.value;
+    if (input.dataset.settingType === 'number') v = parseInt(v, 10);
+    await window.SiteSettings.save(key, v);
+  }
+  showToast('השמירה הצליחה ✓');
+}
+
+async function resetSettingsFromForm(containerId) {
+  if (!confirm('לאפס את כל השדות בלשונית זו לברירת מחדל?')) return;
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const inputs = container.querySelectorAll('[data-setting-key]');
+  for (const input of inputs) {
+    const key = input.dataset.settingKey;
+    await window.SiteSettings.delete(key);
+    input.value = input.dataset.settingDefault;
+  }
+  showToast('אופס לברירת המחדל');
+}
+
+document.getElementById('texts-save-btn').addEventListener('click', () => saveSettingsFromForm('texts-form'));
+document.getElementById('theme-save-btn').addEventListener('click', () => saveSettingsFromForm('theme-form'));
+document.getElementById('texts-reset-btn').addEventListener('click', () => resetSettingsFromForm('texts-form'));
+document.getElementById('theme-reset-btn').addEventListener('click', () => resetSettingsFromForm('theme-form'));
