@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Test-NetConnection -ComputerName localhost -Port 3000 -WarningAction SilentlyContinue\\).TcpTestSucceeded)",
+      "Bash(start cmd *)",
+      "Bash(node -e ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git rebase *)",
+      "Bash(git fetch *)",
+      "Bash(git reset *)",
+      "Bash(dir \"C:\\\\Users\\\\amit7\" /b)",
+      "Bash(find \"/c/Users/amit7\" -maxdepth 3 -type d -name \"*הזמנות*\" 2>/dev/null)",
+      "Read(//c/Users/amit7/**)",
+      "Bash(node -e \"try{require\\('sharp'\\);console.log\\('sharp ok'\\)}catch\\(e\\){console.log\\('no sharp'\\)}\")",
+      "Bash(node -e \"const {createCanvas, loadImage} = require\\('canvas'\\); console.log\\('canvas ok'\\)\")",
+      "Bash(node -e \"require\\('jimp'\\); console.log\\('jimp ok'\\)\")",
+      "Bash(npm install *)",
+      "Bash(node -e \"try{require\\('sharp'\\);console.log\\('sharp ready'\\)}catch\\(e\\){console.log\\('not yet:',e.message\\)}\")",
+      "Bash(node tools/import-images.js)"
+    ]
+  }
+}
