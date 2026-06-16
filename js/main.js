@@ -223,7 +223,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   `;
   document.body.appendChild(modal);
 
-  function openModal(invLabel) {
+  function openModal(invLabel, invImgPath) {
     const form = document.getElementById('contact-modal-form');
     const success = document.getElementById('modal-success');
     const btn = form.querySelector('.modal-submit-btn');
@@ -233,7 +233,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     btn.disabled = false;
     btn.textContent = 'שליחה';
 
-    // Add or remove hidden invitation-reference field
+    // Hidden field: invitation name
     let invField = form.querySelector('[name="הזמנה שהתעניין בה"]');
     if (invLabel) {
       if (!invField) {
@@ -245,6 +245,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       invField.value = invLabel;
     } else if (invField) {
       invField.remove();
+    }
+
+    // Hidden field: direct link to invitation image
+    let imgField = form.querySelector('[name="קישור לתמונת ההזמנה"]');
+    if (invImgPath) {
+      const imgUrl = window.location.origin + '/' + invImgPath;
+      if (!imgField) {
+        imgField = document.createElement('input');
+        imgField.type = 'hidden';
+        imgField.name = 'קישור לתמונת ההזמנה';
+        form.appendChild(imgField);
+      }
+      imgField.value = imgUrl;
+    } else if (imgField) {
+      imgField.remove();
     }
 
     modal.hidden = false;
@@ -260,8 +275,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   document.addEventListener('click', e => {
     if (!e.target.classList.contains('open-contact-modal')) return;
     const btn = e.target;
-    const invLabel = btn.dataset.invLabel || null;
-    openModal(invLabel);
+    openModal(btn.dataset.invLabel || null, btn.dataset.invImg || null);
   });
 
   modal.querySelector('.modal-close').addEventListener('click', closeModal);

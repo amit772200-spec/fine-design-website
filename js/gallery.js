@@ -60,6 +60,7 @@ function buildCard(inv, basePath) {
     orderBtn.textContent = 'להזמנה';
     const imgNum = inv.imagePath ? inv.imagePath.split('/').pop().replace(/\.\w+$/, '') : '';
     orderBtn.dataset.invLabel = categoryLabel(inv.category) + (imgNum ? ' — הזמנה ' + imgNum : '');
+    if (inv.imagePath) orderBtn.dataset.invImg = inv.imagePath;
     footer.appendChild(orderBtn);
   }
 
