@@ -252,10 +252,70 @@
     "imagePath": "images/gallery/challah/014.jpg"
   },
   {
-    "id": "static-0043",
-    "category": "henna",
+    "id": "static-0075",
+    "category": "save-the-date",
     "price": 97,
-    "imagePath": "images/gallery/henna/001.jpg"
+    "imagePath": "images/gallery/save-the-date/001.jpg"
+  },
+  {
+    "id": "static-0076",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/002.jpg"
+  },
+  {
+    "id": "static-0077",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/003.jpg"
+  },
+  {
+    "id": "static-0078",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/004.jpg"
+  },
+  {
+    "id": "static-0079",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/005.jpg"
+  },
+  {
+    "id": "static-0080",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/006.jpg"
+  },
+  {
+    "id": "static-0081",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/007.jpg"
+  },
+  {
+    "id": "static-0082",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/008.jpg"
+  },
+  {
+    "id": "static-0083",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/009.jpg"
+  },
+  {
+    "id": "static-0084",
+    "category": "save-the-date",
+    "price": 97,
+    "imagePath": "images/gallery/save-the-date/010.jpg"
+  },
+  {
+    "id": "static-0085",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/001.jpg"
   },
   {
     "id": "static-0044",
@@ -270,12 +330,6 @@
     "imagePath": "images/gallery/henna/003.jpg"
   },
   {
-    "id": "static-0046",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/004.jpg"
-  },
-  {
     "id": "static-0047",
     "category": "henna",
     "price": 97,
@@ -286,6 +340,48 @@
     "category": "henna",
     "price": 97,
     "imagePath": "images/gallery/henna/006.jpg"
+  },
+  {
+    "id": "static-0055",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/013.jpg"
+  },
+  {
+    "id": "static-0056",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/014.jpg"
+  },
+  {
+    "id": "static-0058",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/016.jpg"
+  },
+  {
+    "id": "static-0059",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/017.jpg"
+  },
+  {
+    "id": "static-0060",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/018.jpg"
+  },
+  {
+    "id": "static-0043",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/001.jpg"
+  },
+  {
+    "id": "static-0046",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/004.jpg"
   },
   {
     "id": "static-0049",
@@ -324,40 +420,10 @@
     "imagePath": "images/gallery/henna/012.jpg"
   },
   {
-    "id": "static-0055",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/013.jpg"
-  },
-  {
-    "id": "static-0056",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/014.jpg"
-  },
-  {
     "id": "static-0057",
     "category": "henna",
     "price": 97,
     "imagePath": "images/gallery/henna/015.jpg"
-  },
-  {
-    "id": "static-0058",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/016.jpg"
-  },
-  {
-    "id": "static-0059",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/017.jpg"
-  },
-  {
-    "id": "static-0060",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/018.jpg"
   },
   {
     "id": "static-0061",
@@ -442,65 +508,5 @@
     "category": "henna",
     "price": 97,
     "imagePath": "images/gallery/henna/032.jpg"
-  },
-  {
-    "id": "static-0075",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/001.jpg"
-  },
-  {
-    "id": "static-0076",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/002.jpg"
-  },
-  {
-    "id": "static-0077",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/003.jpg"
-  },
-  {
-    "id": "static-0078",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/004.jpg"
-  },
-  {
-    "id": "static-0079",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/005.jpg"
-  },
-  {
-    "id": "static-0080",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/006.jpg"
-  },
-  {
-    "id": "static-0081",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/007.jpg"
-  },
-  {
-    "id": "static-0082",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/008.jpg"
-  },
-  {
-    "id": "static-0083",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/009.jpg"
-  },
-  {
-    "id": "static-0084",
-    "category": "save-the-date",
-    "price": 97,
-    "imagePath": "images/gallery/save-the-date/010.jpg"
   }
 ]
