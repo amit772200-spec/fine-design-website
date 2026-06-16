@@ -209,6 +209,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           <label for="modal-email">כתובת מייל</label>
           <input type="email" id="modal-email" name="מייל" autocomplete="email" placeholder="example@mail.com">
         </div>
+        <div class="modal-form-group">
+          <label for="modal-notes">הערות <span class="modal-optional">(לא חובה)</span></label>
+          <textarea id="modal-notes" name="הערות" rows="3" placeholder="כל מה שתרצו להוסיף..."></textarea>
+        </div>
         <button type="submit" class="modal-submit-btn">שליחה</button>
         <p class="modal-note">נחזור אליכם תוך 24 שעות</p>
       </form>

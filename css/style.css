@@ -1798,10 +1798,31 @@ p {
   direction: rtl;
 }
 
-.modal-form-group input:focus {
+.modal-form-group input:focus,
+.modal-form-group textarea:focus {
   outline: none;
   border-color: #b8955a;
   box-shadow: 0 0 0 3px rgba(184,149,90,0.15);
+}
+
+.modal-form-group textarea {
+  font-family: var(--font-body, 'Heebo', sans-serif);
+  font-size: 0.9375rem;
+  color: #2c2418;
+  background: #faf8f4;
+  border: 1px solid #e8dfd0;
+  border-radius: 4px;
+  padding: 10px 12px;
+  width: 100%;
+  resize: vertical;
+  transition: border-color 0.2s;
+  direction: rtl;
+}
+
+.modal-optional {
+  font-weight: 400;
+  color: #7a6e5f;
+  font-size: 0.8125rem;
 }
 
 .modal-submit-btn {
