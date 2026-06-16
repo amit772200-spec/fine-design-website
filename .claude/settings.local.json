@@ -19,7 +19,8 @@
       "Bash(node -e \"require\\('jimp'\\); console.log\\('jimp ok'\\)\")",
       "Bash(npm install *)",
       "Bash(node -e \"try{require\\('sharp'\\);console.log\\('sharp ready'\\)}catch\\(e\\){console.log\\('not yet:',e.message\\)}\")",
-      "Bash(node tools/import-images.js)"
+      "Bash(node tools/import-images.js)",
+      "Bash(node tools/update-site.js)"
     ]
   }
 }
