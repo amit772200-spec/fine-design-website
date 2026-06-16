@@ -1,10 +1,10 @@
 'use strict';
 
 /* =========================================================
-   GALLERY LOADER — reads from IndexedDB via db.js
-   Supports multiple grids on the same page, each with:
-     [data-gallery-category="all" | "weddings" | "henna" | ...]
-     [data-gallery-limit="6"]  (optional cap)
+   GALLERY LOADER
+   Merges static images from data/gallery.json with any
+   admin-added items from IndexedDB (admin additions override
+   static items with the same id).
    ========================================================= */
 
 function buildCard(inv, basePath) {
@@ -12,25 +12,32 @@ function buildCard(inv, basePath) {
   card.className = 'invitation-card';
   card.dataset.id = inv.id;
 
-  const imgLink = document.createElement('a');
-  imgLink.href = basePath + 'pages/product.html?id=' + encodeURIComponent(inv.id);
-  imgLink.setAttribute('aria-label', 'לפרטים והזמנה');
+  const href = inv.id.startsWith('static-')
+    ? null
+    : basePath + 'pages/product.html?id=' + encodeURIComponent(inv.id);
 
-  if (inv.imageData) {
+  const imgWrap = href ? document.createElement('a') : document.createElement('div');
+  if (href) {
+    imgWrap.href = href;
+    imgWrap.setAttribute('aria-label', 'לפרטים והזמנה');
+  }
+
+  const imgSrc = inv.imageData || (inv.imagePath ? basePath + inv.imagePath : null);
+  if (imgSrc) {
     const img = document.createElement('img');
-    img.src = inv.imageData;
+    img.src = imgSrc;
     img.alt = 'הזמנה ל' + categoryLabel(inv.category);
     img.className = 'invitation-card-img';
     img.loading = 'lazy';
-    imgLink.appendChild(img);
+    imgWrap.appendChild(img);
   } else {
     const placeholder = document.createElement('div');
     placeholder.className = 'invitation-card-img-placeholder';
     placeholder.textContent = categoryLabel(inv.category);
-    imgLink.appendChild(placeholder);
+    imgWrap.appendChild(placeholder);
   }
 
-  card.appendChild(imgLink);
+  card.appendChild(imgWrap);
 
   const footer = document.createElement('div');
   footer.className = 'invitation-card-footer';
@@ -39,21 +46,27 @@ function buildCard(inv, basePath) {
   priceTag.className = 'price-tag';
   priceTag.innerHTML = '<span class="price-symbol">&#8362;</span>' + escHtml(inv.price || '0');
 
-  const orderBtn = document.createElement('a');
-  orderBtn.href = basePath + 'pages/product.html?id=' + encodeURIComponent(inv.id);
-  orderBtn.className = 'invitation-order-btn';
-  orderBtn.textContent = 'להזמנה';
-
   footer.appendChild(priceTag);
-  footer.appendChild(orderBtn);
-  card.appendChild(footer);
 
+  if (href) {
+    const orderBtn = document.createElement('a');
+    orderBtn.href = href;
+    orderBtn.className = 'invitation-order-btn';
+    orderBtn.textContent = 'להזמנה';
+    footer.appendChild(orderBtn);
+  } else {
+    const orderBtn = document.createElement('button');
+    orderBtn.className = 'invitation-order-btn open-contact-modal';
+    orderBtn.textContent = 'להזמנה';
+    footer.appendChild(orderBtn);
+  }
+
+  card.appendChild(footer);
   return card;
 }
 
 function renderInto(container, items, basePath, emptyHTML) {
   container.innerHTML = '';
-
   if (items.length === 0) {
     const empty = document.createElement('div');
     empty.className = 'gallery-empty';
@@ -61,7 +74,6 @@ function renderInto(container, items, basePath, emptyHTML) {
     container.appendChild(empty);
     return;
   }
-
   items.forEach(inv => container.appendChild(buildCard(inv, basePath)));
 }
 
@@ -91,18 +103,29 @@ function escHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
+async function loadStaticGallery(basePath) {
+  try {
+    const res = await fetch(basePath + 'data/gallery.json');
+    if (!res.ok) return [];
+    return await res.json();
+  } catch {
+    return [];
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   const grids = document.querySelectorAll('[data-gallery-category]');
   if (!grids.length) return;
   const basePath = getBasePath();
 
-  let all = [];
-  try {
-    all = await dbLoadAll();
-  } catch (err) {
-    console.error('Gallery load error:', err);
-    return;
-  }
+  const [staticItems, dbItems] = await Promise.all([
+    loadStaticGallery(basePath),
+    (async () => { try { return await dbLoadAll(); } catch { return []; } })(),
+  ]);
+
+  // Merge: DB items override static ones with same id
+  const dbIds = new Set(dbItems.map(i => i.id));
+  const all = [...staticItems.filter(i => !dbIds.has(i.id)), ...dbItems];
 
   grids.forEach(grid => {
     const category = grid.dataset.galleryCategory;
@@ -113,8 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (limit > 0) items = items.slice(0, limit);
 
     const empty = grid.dataset.galleryEmpty ||
-      'הסטודיו רק התחיל לפרסם דוגמאות — בקרוב יופיעו כאן הזמנות. ' +
-      '<a href="' + basePath + 'pages/weddings.html">לכל הקטגוריות</a>';
+      'הסטודיו רק התחיל לפרסם דוגמאות — בקרוב יופיעו כאן הזמנות.';
 
     renderInto(grid, items, basePath, empty);
   });

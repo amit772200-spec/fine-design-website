@@ -1,0 +1,506 @@
+[
+  {
+    "id": "static-0001",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/001.jpg"
+  },
+  {
+    "id": "static-0002",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/002.jpg"
+  },
+  {
+    "id": "static-0003",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/003.jpg"
+  },
+  {
+    "id": "static-0004",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/004.jpg"
+  },
+  {
+    "id": "static-0005",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/005.jpg"
+  },
+  {
+    "id": "static-0006",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/006.jpg"
+  },
+  {
+    "id": "static-0007",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/007.jpg"
+  },
+  {
+    "id": "static-0008",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/008.jpg"
+  },
+  {
+    "id": "static-0009",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/009.jpg"
+  },
+  {
+    "id": "static-0010",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/010.jpg"
+  },
+  {
+    "id": "static-0011",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/011.jpg"
+  },
+  {
+    "id": "static-0012",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/012.jpg"
+  },
+  {
+    "id": "static-0013",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/013.jpg"
+  },
+  {
+    "id": "static-0014",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/014.jpg"
+  },
+  {
+    "id": "static-0015",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/015.jpg"
+  },
+  {
+    "id": "static-0016",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/016.jpg"
+  },
+  {
+    "id": "static-0017",
+    "category": "bar-bat-mitzvah",
+    "price": 35,
+    "imagePath": "images/gallery/bar-bat-mitzvah/017.jpg"
+  },
+  {
+    "id": "static-0018",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/001.jpg"
+  },
+  {
+    "id": "static-0019",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/002.jpg"
+  },
+  {
+    "id": "static-0020",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/003.jpg"
+  },
+  {
+    "id": "static-0021",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/004.jpg"
+  },
+  {
+    "id": "static-0022",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/005.jpg"
+  },
+  {
+    "id": "static-0023",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/006.jpg"
+  },
+  {
+    "id": "static-0024",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/007.jpg"
+  },
+  {
+    "id": "static-0025",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/008.jpg"
+  },
+  {
+    "id": "static-0026",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/009.jpg"
+  },
+  {
+    "id": "static-0027",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/010.jpg"
+  },
+  {
+    "id": "static-0028",
+    "category": "brit-milah",
+    "price": 35,
+    "imagePath": "images/gallery/brit-milah/011.jpg"
+  },
+  {
+    "id": "static-0029",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/001.jpg"
+  },
+  {
+    "id": "static-0030",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/002.jpg"
+  },
+  {
+    "id": "static-0031",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/003.jpg"
+  },
+  {
+    "id": "static-0032",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/004.jpg"
+  },
+  {
+    "id": "static-0033",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/005.jpg"
+  },
+  {
+    "id": "static-0034",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/006.jpg"
+  },
+  {
+    "id": "static-0035",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/007.jpg"
+  },
+  {
+    "id": "static-0036",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/008.jpg"
+  },
+  {
+    "id": "static-0037",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/009.jpg"
+  },
+  {
+    "id": "static-0038",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/010.jpg"
+  },
+  {
+    "id": "static-0039",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/011.jpg"
+  },
+  {
+    "id": "static-0040",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/012.jpg"
+  },
+  {
+    "id": "static-0041",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/013.jpg"
+  },
+  {
+    "id": "static-0042",
+    "category": "challah",
+    "price": 30,
+    "imagePath": "images/gallery/challah/014.jpg"
+  },
+  {
+    "id": "static-0043",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/001.jpg"
+  },
+  {
+    "id": "static-0044",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/002.jpg"
+  },
+  {
+    "id": "static-0045",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/003.jpg"
+  },
+  {
+    "id": "static-0046",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/004.jpg"
+  },
+  {
+    "id": "static-0047",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/005.jpg"
+  },
+  {
+    "id": "static-0048",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/006.jpg"
+  },
+  {
+    "id": "static-0049",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/007.jpg"
+  },
+  {
+    "id": "static-0050",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/008.jpg"
+  },
+  {
+    "id": "static-0051",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/009.jpg"
+  },
+  {
+    "id": "static-0052",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/010.jpg"
+  },
+  {
+    "id": "static-0053",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/011.jpg"
+  },
+  {
+    "id": "static-0054",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/012.jpg"
+  },
+  {
+    "id": "static-0055",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/013.jpg"
+  },
+  {
+    "id": "static-0056",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/014.jpg"
+  },
+  {
+    "id": "static-0057",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/015.jpg"
+  },
+  {
+    "id": "static-0058",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/016.jpg"
+  },
+  {
+    "id": "static-0059",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/017.jpg"
+  },
+  {
+    "id": "static-0060",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/018.jpg"
+  },
+  {
+    "id": "static-0061",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/019.jpg"
+  },
+  {
+    "id": "static-0062",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/020.jpg"
+  },
+  {
+    "id": "static-0063",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/021.jpg"
+  },
+  {
+    "id": "static-0064",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/022.jpg"
+  },
+  {
+    "id": "static-0065",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/023.jpg"
+  },
+  {
+    "id": "static-0066",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/024.jpg"
+  },
+  {
+    "id": "static-0067",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/025.jpg"
+  },
+  {
+    "id": "static-0068",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/026.jpg"
+  },
+  {
+    "id": "static-0069",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/027.jpg"
+  },
+  {
+    "id": "static-0070",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/028.jpg"
+  },
+  {
+    "id": "static-0071",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/029.jpg"
+  },
+  {
+    "id": "static-0072",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/030.jpg"
+  },
+  {
+    "id": "static-0073",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/031.jpg"
+  },
+  {
+    "id": "static-0074",
+    "category": "henna",
+    "price": 35,
+    "imagePath": "images/gallery/henna/032.jpg"
+  },
+  {
+    "id": "static-0075",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/001.jpg"
+  },
+  {
+    "id": "static-0076",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/002.jpg"
+  },
+  {
+    "id": "static-0077",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/003.jpg"
+  },
+  {
+    "id": "static-0078",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/004.jpg"
+  },
+  {
+    "id": "static-0079",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/005.jpg"
+  },
+  {
+    "id": "static-0080",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/006.jpg"
+  },
+  {
+    "id": "static-0081",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/007.jpg"
+  },
+  {
+    "id": "static-0082",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/008.jpg"
+  },
+  {
+    "id": "static-0083",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/009.jpg"
+  },
+  {
+    "id": "static-0084",
+    "category": "save-the-date",
+    "price": 40,
+    "imagePath": "images/gallery/save-the-date/010.jpg"
+  }
+]
