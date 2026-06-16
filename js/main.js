@@ -133,3 +133,144 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     track.dataset.cloned = 'true';
   });
 })();
+
+/* =========================================================
+   WHATSAPP CAROUSEL
+   ========================================================= */
+(function initWaCarousel() {
+  const track = document.getElementById('wa-track');
+  if (!track) return;
+
+  const slides = track.querySelectorAll('.wa-slide');
+  const dots   = document.querySelectorAll('.wa-dot');
+  let current  = 0;
+  let timer;
+
+  function goTo(idx) {
+    current = (idx + slides.length) % slides.length;
+    track.style.transform = 'translateX(' + (current * 100) + '%)';
+    dots.forEach((d, i) => {
+      d.classList.toggle('wa-dot--active', i === current);
+      d.setAttribute('aria-selected', String(i === current));
+    });
+  }
+
+  document.getElementById('wa-next') &&
+    document.getElementById('wa-next').addEventListener('click', () => { clearInterval(timer); goTo(current - 1); startAuto(); });
+  document.getElementById('wa-prev') &&
+    document.getElementById('wa-prev').addEventListener('click', () => { clearInterval(timer); goTo(current + 1); startAuto(); });
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { clearInterval(timer); goTo(i); startAuto(); }));
+
+  function startAuto() {
+    timer = setInterval(() => goTo(current + 1), 4500);
+  }
+
+  /* RTL: slides stack right-to-left, positive translateX moves right */
+  track.style.display = 'flex';
+  track.style.transition = 'transform 0.4s ease';
+  slides.forEach(s => { s.style.minWidth = '100%'; });
+
+  startAuto();
+})();
+
+/* =========================================================
+   CONTACT MODAL
+   ========================================================= */
+(function injectContactModal() {
+  const modal = document.createElement('div');
+  modal.id = 'contact-modal';
+  modal.className = 'modal-overlay';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'modal-heading');
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="modal-box">
+      <button class="modal-close" aria-label="סגור">&#215;</button>
+      <h2 id="modal-heading">השאירו פרטים ונחזור אליכם</h2>
+      <p>מלאו את הפרטים ונחזור אליכם בהקדם</p>
+      <form id="contact-modal-form" class="modal-form" novalidate>
+        <div class="modal-form-row">
+          <div class="modal-form-group">
+            <label for="modal-firstname">שם פרטי *</label>
+            <input type="text" id="modal-firstname" name="שם פרטי" required autocomplete="given-name" placeholder="שם פרטי">
+          </div>
+          <div class="modal-form-group">
+            <label for="modal-lastname">שם משפחה *</label>
+            <input type="text" id="modal-lastname" name="שם משפחה" required autocomplete="family-name" placeholder="שם משפחה">
+          </div>
+        </div>
+        <div class="modal-form-group">
+          <label for="modal-phone">מספר טלפון *</label>
+          <input type="tel" id="modal-phone" name="טלפון" required autocomplete="tel" placeholder="05X-XXXXXXX">
+        </div>
+        <div class="modal-form-group">
+          <label for="modal-email">כתובת מייל</label>
+          <input type="email" id="modal-email" name="מייל" autocomplete="email" placeholder="example@mail.com">
+        </div>
+        <button type="submit" class="modal-submit-btn">שליחה</button>
+        <p class="modal-note">נחזור אליכם תוך 24 שעות</p>
+      </form>
+      <div id="modal-success" class="modal-success" hidden>
+        <p>תודה! קיבלנו את פרטיכם ונחזור אליכם בקרוב.</p>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  function openModal() {
+    const form = document.getElementById('contact-modal-form');
+    const success = document.getElementById('modal-success');
+    const btn = form.querySelector('.modal-submit-btn');
+    form.hidden = false;
+    form.reset();
+    success.hidden = true;
+    btn.disabled = false;
+    btn.textContent = 'שליחה';
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.modal-close').focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('open-contact-modal')) openModal();
+  });
+
+  modal.querySelector('.modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+  document.getElementById('contact-modal-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.modal-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'שולח...';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/finedesign772200@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        form.hidden = true;
+        document.getElementById('modal-success').hidden = false;
+        setTimeout(closeModal, 3500);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'שליחה';
+        alert('שגיאה בשליחה. אנא נסו שוב מאוחר יותר.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'שליחה';
+      alert('שגיאה בשליחה. אנא נסו שוב מאוחר יותר.');
+    }
+  });
+})();

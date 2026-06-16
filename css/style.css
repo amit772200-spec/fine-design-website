@@ -1532,6 +1532,301 @@ p {
 }
 
 /* =========================================================
+   WHATSAPP TESTIMONIALS CAROUSEL
+   ========================================================= */
+.wa-carousel {
+  max-width: 440px;
+  margin-inline: auto;
+  user-select: none;
+}
+
+.wa-track {
+  display: flex;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.wa-slide {
+  min-width: 100%;
+  transition: transform 0.4s ease;
+}
+
+.wa-window {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(44,36,24,0.14);
+  font-family: var(--font-body);
+}
+
+.wa-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #075E54;
+  padding: 10px 16px;
+  direction: rtl;
+}
+
+.wa-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wa-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.wa-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+}
+
+.wa-status {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+}
+
+.wa-body {
+  background: #E5DDD5;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z' fill='%23b5a9a0' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+  padding: 16px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  direction: rtl;
+}
+
+.wa-msg {
+  max-width: 78%;
+  position: relative;
+  padding: 7px 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.wa-msg p {
+  color: #111;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.wa-msg--their {
+  background: #fff;
+  align-self: flex-end;
+  border-start-end-radius: 2px;
+}
+
+.wa-msg--mine {
+  background: #DCF8C6;
+  align-self: flex-start;
+  border-start-start-radius: 2px;
+}
+
+.wa-time {
+  position: absolute;
+  bottom: 4px;
+  inset-inline-start: 8px;
+  font-size: 0.65rem;
+  color: rgba(0,0,0,0.45);
+}
+
+.wa-ticks {
+  position: absolute;
+  bottom: 4px;
+  inset-inline-end: 6px;
+  font-size: 0.65rem;
+  color: #53BDEB;
+  letter-spacing: -3px;
+}
+
+.wa-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-block-start: 20px;
+}
+
+.wa-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line, #e8dfd0);
+  background: var(--surface, #fff);
+  font-size: 1.25rem;
+  color: var(--text, #2c2418);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.wa-btn:hover {
+  background: var(--clay-soft, #b8955a);
+  color: #fff;
+  border-color: var(--clay-soft, #b8955a);
+}
+
+.wa-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.wa-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--line, #e8dfd0);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.wa-dot--active {
+  background: #25D366;
+  transform: scale(1.3);
+}
+
+/* =========================================================
+   CONTACT MODAL
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background-color: rgba(44, 36, 24, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3, 24px);
+  backdrop-filter: blur(3px);
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-box {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(44, 36, 24, 0.28);
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  inset-inline-start: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f3ede4;
+  border: none;
+  font-size: 1.25rem;
+  color: #2c2418;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.modal-close:hover { background: #e8dfd0; }
+
+.modal-box h2 { font-size: 1.5rem; margin-block-end: 6px; }
+.modal-box > p { font-size: 0.9375rem; color: #7a6e5f; margin-block-end: 24px; }
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: start;
+}
+
+.modal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.modal-form-group { display: flex; flex-direction: column; gap: 5px; }
+
+.modal-form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2c2418;
+}
+
+.modal-form-group input {
+  font-family: var(--font-body, 'Heebo', sans-serif);
+  font-size: 0.9375rem;
+  color: #2c2418;
+  background: #faf8f4;
+  border: 1px solid #e8dfd0;
+  border-radius: 4px;
+  padding: 10px 12px;
+  width: 100%;
+  transition: border-color 0.2s;
+  direction: rtl;
+}
+
+.modal-form-group input:focus {
+  outline: none;
+  border-color: #b8955a;
+  box-shadow: 0 0 0 3px rgba(184,149,90,0.15);
+}
+
+.modal-submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #b8955a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-body, 'Heebo', sans-serif);
+  margin-block-start: 4px;
+  transition: background 0.2s;
+}
+
+.modal-submit-btn:hover { background: #9a7a44; }
+.modal-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.modal-note {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #7a6e5f;
+  margin-block-start: 6px;
+}
+
+.modal-success { padding: 24px; }
+.modal-success p { font-size: 1.0625rem; color: #2c2418; font-weight: 500; }
+
+/* =========================================================
    TRUST STRIP
    ========================================================= */
 .trust-strip {
