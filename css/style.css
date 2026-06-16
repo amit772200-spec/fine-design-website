@@ -384,7 +384,7 @@ p {
   background: linear-gradient(to right, transparent, var(--line-strong) 100%);
   pointer-events: none;
 }
-.header-rule--start { inset-inline-start: clamp(20px, 4vw, 40px); }
+.header-rule--start { display: none; }
 .header-rule--end {
   inset-inline-end: clamp(20px, 4vw, 40px);
   background: linear-gradient(to left, transparent, var(--line-strong) 100%);
@@ -1953,9 +1953,9 @@ p {
    CTA BANNER (interior pages)
    ========================================================= */
 .cta-banner {
-  background-color: var(--ink);
+  background-color: var(--gold);
   color: var(--paper);
-  padding-block: clamp(64px, 8vw, 120px);
+  padding-block: clamp(36px, 5vw, 64px);
   text-align: center;
 }
 
@@ -1965,7 +1965,7 @@ p {
 }
 
 .cta-banner p {
-  color: rgba(251,247,242,0.72);
+  color: rgba(251,247,242,0.88);
   margin-block-end: var(--space-3);
   max-width: 56ch;
   margin-inline: auto;
@@ -1974,11 +1974,11 @@ p {
 .cta-banner .btn--primary {
   background-color: var(--paper);
   color: var(--ink);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 .cta-banner .btn--primary:hover {
-  background-color: var(--clay);
-  color: #fff;
+  background-color: var(--ink);
+  color: var(--paper);
 }
 
 /* =========================================================
