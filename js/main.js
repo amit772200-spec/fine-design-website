@@ -109,7 +109,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.01, rootMargin: '0px 0px -10% 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px -5% 0px' });
 
   all.forEach(el => observer.observe(el));
 
@@ -219,7 +219,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   `;
   document.body.appendChild(modal);
 
-  function openModal() {
+  function openModal(invLabel) {
     const form = document.getElementById('contact-modal-form');
     const success = document.getElementById('modal-success');
     const btn = form.querySelector('.modal-submit-btn');
@@ -228,6 +228,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     success.hidden = true;
     btn.disabled = false;
     btn.textContent = 'שליחה';
+
+    // Add or remove hidden invitation-reference field
+    let invField = form.querySelector('[name="הזמנה שהתעניין בה"]');
+    if (invLabel) {
+      if (!invField) {
+        invField = document.createElement('input');
+        invField.type = 'hidden';
+        invField.name = 'הזמנה שהתעניין בה';
+        form.appendChild(invField);
+      }
+      invField.value = invLabel;
+    } else if (invField) {
+      invField.remove();
+    }
+
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     modal.querySelector('.modal-close').focus();
@@ -239,7 +254,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   }
 
   document.addEventListener('click', e => {
-    if (e.target.classList.contains('open-contact-modal')) openModal();
+    if (!e.target.classList.contains('open-contact-modal')) return;
+    const btn = e.target;
+    const invLabel = btn.dataset.invLabel || null;
+    openModal(invLabel);
   });
 
   modal.querySelector('.modal-close').addEventListener('click', closeModal);

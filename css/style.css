@@ -376,6 +376,12 @@ p {
   padding-block: var(--space-2);
 }
 
+@media (max-width: 1023px) {
+  .header-row-brand {
+    padding-inline: 56px;
+  }
+}
+
 .header-rule {
   position: absolute;
   top: 50%;

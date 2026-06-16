@@ -58,6 +58,8 @@ function buildCard(inv, basePath) {
     const orderBtn = document.createElement('button');
     orderBtn.className = 'invitation-order-btn open-contact-modal';
     orderBtn.textContent = 'להזמנה';
+    const imgNum = inv.imagePath ? inv.imagePath.split('/').pop().replace(/\.\w+$/, '') : '';
+    orderBtn.dataset.invLabel = categoryLabel(inv.category) + (imgNum ? ' — הזמנה ' + imgNum : '');
     footer.appendChild(orderBtn);
   }
 
