@@ -33,11 +33,7 @@ const SETTINGS_SCHEMA = {
   contact_email:      { label: 'כתובת מייל',                   type: 'text',     default: 'amit@example.com' },
   footer_about:       { label: 'Footer · תיאור',                type: 'textarea', default: 'סטודיו בוטיק להזמנות מעוצבות לאירועים — עיצוב אישי, רגיש ומקצועי לכל סגנון.' },
 
-  /* Theme */
-  theme_primary:      { label: 'צבע ראשי (CTA)',                type: 'color',    default: '#c9684e' },
-  theme_primary_deep: { label: 'צבע ראשי כהה (hover)',           type: 'color',    default: '#a44e36' },
-  theme_paper:        { label: 'רקע ראשי',                       type: 'color',    default: '#fbf7f2' },
-  theme_ink:          { label: 'צבע טקסט ראשי',                  type: 'color',    default: '#1a1612' },
+  /* Theme — fonts only; colors are controlled solely by CSS */
   theme_font_heading: { label: 'גופן כותרות',                    type: 'select',   default: 'Frank Ruhl Libre',
                         options: ['Frank Ruhl Libre','Noto Serif Hebrew','David Libre','Suez One','Heebo','Assistant','Rubik'] },
   theme_font_body:    { label: 'גופן גוף',                       type: 'select',   default: 'Heebo',
@@ -105,12 +101,8 @@ async function deleteSetting(key) {
 }
 
 function applySettings(settings) {
-  /* THEME — inject CSS variable overrides */
+  /* THEME — fonts and size only; colors are fixed in CSS */
   const root = document.documentElement;
-  if (settings.theme_primary)      root.style.setProperty('--clay', settings.theme_primary);
-  if (settings.theme_primary_deep) root.style.setProperty('--clay-deep', settings.theme_primary_deep);
-  if (settings.theme_paper)        root.style.setProperty('--paper', settings.theme_paper);
-  if (settings.theme_ink)          root.style.setProperty('--ink', settings.theme_ink);
   if (settings.theme_font_heading) root.style.setProperty('--font-heading', `'${settings.theme_font_heading}', serif`);
   if (settings.theme_font_body)    root.style.setProperty('--font-body', `'${settings.theme_font_body}', sans-serif`);
   if (settings.theme_base_size) {

@@ -318,6 +318,216 @@
     "imagePath": "images/gallery/weddings/001.jpg"
   },
   {
+    "id": "static-0086",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/002.png"
+  },
+  {
+    "id": "static-0087",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/003.jpg"
+  },
+  {
+    "id": "static-0088",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/004.png"
+  },
+  {
+    "id": "static-0089",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/005.jpg"
+  },
+  {
+    "id": "static-0090",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/006.jpg"
+  },
+  {
+    "id": "static-0091",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/007.jpg"
+  },
+  {
+    "id": "static-0092",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/008.jpg"
+  },
+  {
+    "id": "static-0093",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/009.png"
+  },
+  {
+    "id": "static-0094",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/010.jpg"
+  },
+  {
+    "id": "static-0095",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/011.png"
+  },
+  {
+    "id": "static-0096",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/012.png"
+  },
+  {
+    "id": "static-0097",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/013.png"
+  },
+  {
+    "id": "static-0098",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/014.jpg"
+  },
+  {
+    "id": "static-0099",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/015.png"
+  },
+  {
+    "id": "static-0100",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/016.png"
+  },
+  {
+    "id": "static-0101",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/017.png"
+  },
+  {
+    "id": "static-0102",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/018.png"
+  },
+  {
+    "id": "static-0103",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/019.png"
+  },
+  {
+    "id": "static-0104",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/020.png"
+  },
+  {
+    "id": "static-0105",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/021.png"
+  },
+  {
+    "id": "static-0106",
+    "category": "weddings",
+    "price": 97,
+    "imagePath": "images/gallery/weddings/022.jpg"
+  },
+  {
+    "id": "static-0107",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/033.jpg"
+  },
+  {
+    "id": "static-0108",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/034.jpg"
+  },
+  {
+    "id": "static-0109",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/035.jpg"
+  },
+  {
+    "id": "static-0110",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/036.jpg"
+  },
+  {
+    "id": "static-0111",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/037.jpg"
+  },
+  {
+    "id": "static-0112",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/038.png"
+  },
+  {
+    "id": "static-0113",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/039.jpg"
+  },
+  {
+    "id": "static-0114",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/040.jpg"
+  },
+  {
+    "id": "static-0115",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/041.jpg"
+  },
+  {
+    "id": "static-0116",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/042.jpg"
+  },
+  {
+    "id": "static-0117",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/043.jpg"
+  },
+  {
+    "id": "static-0118",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/044.jpg"
+  },
+  {
+    "id": "static-0119",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/045.jpg"
+  },
+  {
+    "id": "static-0120",
+    "category": "henna",
+    "price": 97,
+    "imagePath": "images/gallery/henna/046.jpg"
+  },
+  {
     "id": "static-0044",
     "category": "henna",
     "price": 97,

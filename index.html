@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html dir="rtl" lang="he-IL">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="עיצוב הזמנות לאירועים בהתאמה אישית — חתונות, חינה, ברית מילה, בר/בת מצווה, ימי הולדת ועוד. סטודיו בוטיק, מענה תוך שעה, מחיר נגיש.">
   <meta name="keywords" content="הזמנות לאירועים, עיצוב הזמנות, הזמנות לחתונה, הזמנות לחינה, הזמנות לברית, הזמנות לבר מצווה, הזמנות ימי הולדת, הזמנות מעוצבות">
   <meta name="author" content="Fine Design — סטודיו עמית">
   <meta name="robots" content="index, follow">
   <title>Fine Design | סטודיו עמית — הזמנות לאירועים בעיצוב מדויק</title>
-  <link rel="canonical" href="https://bespoke-raindrop-0633e9.netlify.app/">
+  <link rel="canonical" href="https://finedesignbyamit.com/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="he_IL">
-  <meta property="og:url" content="https://bespoke-raindrop-0633e9.netlify.app/">
+  <meta property="og:url" content="https://finedesignbyamit.com/">
   <meta property="og:title" content="Fine Design | סטודיו עמית — הזמנות לאירועים בעיצוב מדויק">
   <meta property="og:description" content="עיצוב הזמנות לאירועים בהתאמה אישית — חתונות, חינה, ברית מילה, בר/בת מצווה, ימי הולדת ועוד.">
-  <meta property="og:image" content="https://bespoke-raindrop-0633e9.netlify.app/images/og-image.jpg">
+  <meta property="og:image" content="https://finedesignbyamit.com/images/og-image.jpg">
   <meta property="og:site_name" content="Fine Design">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fine Design | סטודיו עמית">
@@ -25,7 +26,7 @@
     "@type": "ProfessionalService",
     "name": "Fine Design — סטודיו עמית",
     "description": "עיצוב הזמנות לאירועים בהתאמה אישית — חתונות, חינה, ברית מילה, בר/בת מצווה, ימי הולדת ועוד.",
-    "url": "https://bespoke-raindrop-0633e9.netlify.app",
+    "url": "https://finedesignbyamit.com",
     "telephone": "+972505900090",
     "email": "amit@example.com",
     "priceRange": "₪₪",
@@ -38,6 +39,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/gallery/weddings/007.jpg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/accessibility.css">
 </head>
@@ -197,7 +199,7 @@
         <a href="index.html" class="logo" aria-label="Fine Design — דף הבית">
           <span class="logo-text">
             <span class="logo-fine">Fine Design</span>
-            <span class="logo-design">STUDIO</span>
+            <span class="logo-design">by Amit</span>
           </span>
         </a>
         <span class="header-rule header-rule--end" aria-hidden="true"></span>
@@ -236,7 +238,7 @@
     <div class="mobile-menu-header">
       <span class="logo-text logo-text--sm">
         <span class="logo-fine">Fine Design</span>
-        <span class="logo-design">STUDIO</span>
+        <span class="logo-design">by Amit</span>
       </span>
       <button id="mobile-menu-close" class="mobile-menu-close" aria-label="סגור תפריט">&#215;</button>
     </div>
@@ -251,6 +253,9 @@
         <li><a href="pages/save-the-date.html"><span class="menu-number" aria-hidden="true">07</span> Save the Date</a></li>
       </ul>
     </nav>
+    <div class="mobile-menu-phone">
+      <a href="tel:0505900090">050-590-0090</a>
+    </div>
   </div>
 
   <!-- ===== MAIN CONTENT ===== -->
@@ -285,15 +290,32 @@
             </div>
           </div>
 
-          <div class="hero-stack" aria-hidden="true">
-            <div class="hero-card hero-card--1">
-              <img src="images/gallery/henna/001.jpg" alt="הזמנה לחינה" class="hero-card-img">
-            </div>
-            <div class="hero-card hero-card--2">
-              <img src="images/gallery/weddings/001.jpg" alt="הזמנה לחתונה" class="hero-card-img">
-            </div>
-            <div class="hero-card hero-card--3">
-              <img src="images/gallery/brit-milah/001.jpg" alt="הזמנה לברית" class="hero-card-img">
+          <div class="hero-img-strip" aria-hidden="true">
+            <div class="hero-img-track" id="hero-img-track">
+              <img src="images/gallery/weddings/001.jpg"        class="hero-img-item" alt="">
+              <img src="images/gallery/henna/004.jpg"           class="hero-img-item" alt="">
+              <img src="images/gallery/bar-bat-mitzvah/002.jpg" class="hero-img-item" alt="">
+              <img src="images/gallery/brit-milah/001.jpg"      class="hero-img-item" alt="">
+              <img src="images/gallery/challah/002.jpg"         class="hero-img-item" alt="">
+              <img src="images/gallery/save-the-date/001.jpg"   class="hero-img-item" alt="">
+              <img src="images/gallery/weddings/006.jpg"        class="hero-img-item" alt="">
+              <img src="images/gallery/henna/015.jpg"           class="hero-img-item" alt="">
+              <img src="images/gallery/bar-bat-mitzvah/007.jpg" class="hero-img-item" alt="">
+              <img src="images/gallery/brit-milah/005.jpg"      class="hero-img-item" alt="">
+              <img src="images/gallery/challah/006.jpg"         class="hero-img-item" alt="">
+              <img src="images/gallery/save-the-date/004.jpg"   class="hero-img-item" alt="">
+              <img src="images/gallery/weddings/011.jpg"        class="hero-img-item" alt="">
+              <img src="images/gallery/henna/026.jpg"           class="hero-img-item" alt="">
+              <img src="images/gallery/bar-bat-mitzvah/011.jpg" class="hero-img-item" alt="">
+              <img src="images/gallery/brit-milah/008.jpg"      class="hero-img-item" alt="">
+              <img src="images/gallery/challah/010.jpg"         class="hero-img-item" alt="">
+              <img src="images/gallery/save-the-date/007.jpg"   class="hero-img-item" alt="">
+              <img src="images/gallery/weddings/017.png"        class="hero-img-item" alt="">
+              <img src="images/gallery/henna/038.png"           class="hero-img-item" alt="">
+              <img src="images/gallery/bar-bat-mitzvah/015.jpg" class="hero-img-item" alt="">
+              <img src="images/gallery/brit-milah/011.jpg"      class="hero-img-item" alt="">
+              <img src="images/gallery/challah/013.jpg"         class="hero-img-item" alt="">
+              <img src="images/gallery/save-the-date/010.jpg"   class="hero-img-item" alt="">
             </div>
           </div>
 
@@ -367,24 +389,6 @@
             <span class="category-card-link">צפייה</span>
           </a>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- LATEST WORK — auto-pulled from IndexedDB via gallery.js -->
-    <section class="section" id="latest" aria-labelledby="latest-heading" data-reveal>
-      <div class="container">
-        <div class="section-header section-header--center">
-          <h2 id="latest-heading">הזמנות שביצעתי לאחרונה</h2>
-          <span class="ornament" aria-hidden="true">
-            <span class="ornament-dot"></span>
-            <span class="ornament-dot ornament-dot--filled"></span>
-            <span class="ornament-dot"></span>
-          </span>
-          <p class="subtitle">מבחר מההזמנות שעיצבתי לאחרונה — לחיצה לפרטים ולהזמנה.</p>
-        </div>
-
-        <div class="gallery-grid" id="latest-grid" data-gallery-category="all" data-gallery-limit="6">
         </div>
       </div>
     </section>
@@ -495,38 +499,56 @@
         <div class="testimonials-grid">
 
           <article class="testimonial-card">
+            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+              <span aria-hidden="true">★★★★★</span>
+            </div>
             <p class="testimonial-quote">
               עמית הקשיבה לכל פרט קטן, והתוצאה עברה את כל הציפיות שלנו.
-              ההזמנה הייתה ההזמנה הכי יפה שראיתי, ובאמת הרגשנו שזה אנחנו.
+              ההזמנה הייתה הכי יפה שראיתי, ובאמת הרגשנו שזה אנחנו.
             </p>
             <div class="testimonial-meta">
-              <span class="testimonial-author">מיכל ואביב</span>
+              <strong class="testimonial-author">מיכל ואביב</strong>
               <span class="testimonial-event">חתונה</span>
             </div>
           </article>
 
           <article class="testimonial-card">
+            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+              <span aria-hidden="true">★★★★★</span>
+            </div>
             <p class="testimonial-quote">
-              הזמנה לחינה שלי הייתה הכי יפה שראיתי. כולן שאלו מי עיצבה.
+              ההזמנה לחינה שלי הייתה הכי יפה שראיתי. כולן שאלו מי עיצבה.
               שירות מהיר, מדויק ומקסים — מומלץ בחום.
             </p>
             <div class="testimonial-meta">
-              <span class="testimonial-author">מאיה</span>
+              <strong class="testimonial-author">מאיה כ.</strong>
               <span class="testimonial-event">חינה</span>
             </div>
           </article>
 
           <article class="testimonial-card">
+            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
+              <span aria-hidden="true">★★★★★</span>
+            </div>
             <p class="testimonial-quote">
               הזמנתי עיצוב לבר מצווה של הבן שלי, ולא יכולתי להיות מרוצה יותר.
               עמית עבדה מהר, באהבה ובדיוק לפרטים הכי קטנים.
             </p>
             <div class="testimonial-meta">
-              <span class="testimonial-author">דינה</span>
+              <strong class="testimonial-author">דינה ש.</strong>
               <span class="testimonial-event">בר מצווה</span>
             </div>
           </article>
 
+        </div>
+
+        <div class="testimonials-total" aria-label="סה״כ דירוגים">
+          <span class="testimonials-total-stars" aria-hidden="true">★★★★★</span>
+          <span>5.0 · מאות לקוחות מרוצים</span>
+        </div>
+
+        <div class="testimonials-cta">
+          <button class="btn btn--ghost open-review-modal">כתבו לנו ביקורת</button>
         </div>
       </div>
     </section>
@@ -614,127 +636,6 @@
       </div>
     </section>
 
-    <!-- WHATSAPP TESTIMONIALS CAROUSEL -->
-    <section class="section section--alt" id="reviews" aria-labelledby="reviews-heading" data-reveal>
-      <div class="container">
-        <div class="section-header section-header--center">
-          <h2 id="reviews-heading">ישר מהווצאפ</h2>
-          <span class="ornament" aria-hidden="true">
-            <span class="ornament-dot"></span>
-            <span class="ornament-dot ornament-dot--filled"></span>
-            <span class="ornament-dot"></span>
-          </span>
-          <p class="subtitle">הודעות אמיתיות מלקוחות שקיבלו את ההזמנה שלהם</p>
-        </div>
-
-        <div class="wa-carousel" role="region" aria-label="המלצות לקוחות">
-          <div class="wa-track" id="wa-track">
-
-            <!-- Slide 1: נועה -->
-            <div class="wa-slide" role="group" aria-label="המלצה 1 מתוך 3">
-              <div class="wa-window">
-                <div class="wa-header">
-                  <span class="wa-avatar" aria-hidden="true">נ</span>
-                  <div class="wa-header-info">
-                    <span class="wa-name">נועה</span>
-                    <span class="wa-status">לקוחה</span>
-                  </div>
-                </div>
-                <div class="wa-body">
-                  <div class="wa-msg wa-msg--their">
-                    <p>היי</p>
-                    <span class="wa-time">15:18</span>
-                  </div>
-                  <div class="wa-msg wa-msg--their">
-                    <p>תודה רבה על ההזמנה<br>יצא ממש יפה</p>
-                    <span class="wa-time">15:18</span>
-                  </div>
-                  <div class="wa-msg wa-msg--mine">
-                    <p>המון המון מזל טוב<br>באהבה רבה</p>
-                    <span class="wa-time">15:19</span>
-                    <span class="wa-ticks" aria-hidden="true">&#10003;&#10003;</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 2: מיכל -->
-            <div class="wa-slide" role="group" aria-label="המלצה 2 מתוך 3">
-              <div class="wa-window">
-                <div class="wa-header">
-                  <span class="wa-avatar" aria-hidden="true">מ</span>
-                  <div class="wa-header-info">
-                    <span class="wa-name">מיכל</span>
-                    <span class="wa-status">לקוחה</span>
-                  </div>
-                </div>
-                <div class="wa-body">
-                  <div class="wa-msg wa-msg--their">
-                    <p>רציתי להגיד תודה רבה על ההזמנה<br>יצא ממש יפה!</p>
-                    <span class="wa-time">15:18</span>
-                  </div>
-                  <div class="wa-msg wa-msg--mine">
-                    <p>היי מיכל אהובה<br>איזה כיף לשמוע, שמחה שאהבת!</p>
-                    <span class="wa-time">15:19</span>
-                    <span class="wa-ticks" aria-hidden="true">&#10003;&#10003;</span>
-                  </div>
-                  <div class="wa-msg wa-msg--their">
-                    <p>בהחלט! הכל היה מושלם</p>
-                    <span class="wa-time">15:20</span>
-                  </div>
-                  <div class="wa-msg wa-msg--mine">
-                    <p>באהבה רבה, מזל טוב</p>
-                    <span class="wa-time">15:20</span>
-                    <span class="wa-ticks" aria-hidden="true">&#10003;&#10003;</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 3: יעל -->
-            <div class="wa-slide" role="group" aria-label="המלצה 3 מתוך 3">
-              <div class="wa-window">
-                <div class="wa-header">
-                  <span class="wa-avatar" aria-hidden="true">י</span>
-                  <div class="wa-header-info">
-                    <span class="wa-name">יעל</span>
-                    <span class="wa-status">לקוחה</span>
-                  </div>
-                </div>
-                <div class="wa-body">
-                  <div class="wa-msg wa-msg--their">
-                    <p>היי</p>
-                    <span class="wa-time">14:32</span>
-                  </div>
-                  <div class="wa-msg wa-msg--their">
-                    <p>תודה רבה על ההזמנה<br>יצא ממש יפה</p>
-                    <span class="wa-time">14:32</span>
-                  </div>
-                  <div class="wa-msg wa-msg--mine">
-                    <p>אהבה רבה מזל טוב</p>
-                    <span class="wa-time">14:33</span>
-                    <span class="wa-ticks" aria-hidden="true">&#10003;&#10003;</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="wa-controls">
-            <button class="wa-btn" id="wa-prev" aria-label="המלצה הקודמת">&#8250;</button>
-            <div class="wa-dots" role="tablist" aria-label="בחר המלצה">
-              <button class="wa-dot wa-dot--active" role="tab" aria-selected="true" aria-label="המלצה 1" data-wa-index="0"></button>
-              <button class="wa-dot" role="tab" aria-selected="false" aria-label="המלצה 2" data-wa-index="1"></button>
-              <button class="wa-dot" role="tab" aria-selected="false" aria-label="המלצה 3" data-wa-index="2"></button>
-            </div>
-            <button class="wa-btn" id="wa-next" aria-label="המלצה הבאה">&#8249;</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- TRUST STRIP -->
     <section class="trust-strip" aria-label="ערכי הסטודיו">
       <div class="container">
@@ -795,10 +696,30 @@
           <div class="logo" aria-label="Fine Design — סטודיו עמית">
             <span class="logo-text">
               <span class="logo-fine">Fine Design</span>
-              <span class="logo-design">STUDIO</span>
+              <span class="logo-design">by Amit</span>
             </span>
           </div>
           <p data-edit-key="footer_about">סטודיו בוטיק להזמנות מעוצבות לאירועים — עיצוב אישי, רגיש ומקצועי לכל סגנון.</p>
+          <a href="tel:0505900090" class="footer-phone" dir="ltr">050-590-0090</a>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/_finedesign_/" class="social-link social-link--instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="22" height="22">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="https://wa.me/972505900090" class="social-link social-link--whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22">
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.41A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm0 18a7.96 7.96 0 0 1-4.07-1.115l-.29-.174-3.02.856.842-3.003-.19-.308A7.963 7.963 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8Zm4.388-5.852c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.372-1.923-1.185-.71-.633-1.19-1.414-1.33-1.654-.14-.24-.015-.37.105-.49.108-.107.24-.278.36-.418.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.194-.468-.394-.404-.54-.412l-.46-.008c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.618.574.247 1.02.395 1.368.506.575.183 1.099.157 1.512.095.461-.069 1.42-.581 1.62-1.142.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@finedesign12" class="social-link social-link--tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22">
+                <path d="M16.6 2h-3.2v13.9c0 1.5-1.2 2.7-2.7 2.7s-2.7-1.2-2.7-2.7c0-1.5 1.2-2.7 2.7-2.7.3 0 .6.05.9.13v-3.3a6 6 0 0 0-.9-.07A6 6 0 0 0 4.6 16a6 6 0 0 0 6 6 6 6 0 0 0 6-6V8.6a7.6 7.6 0 0 0 4.4 1.4V6.8a4.4 4.4 0 0 1-4.4-4.4V2Z"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
         <nav class="footer-nav" aria-label="ניווט הזמנות">
@@ -832,7 +753,7 @@
           <span aria-hidden="true" style="opacity:0.3;">·</span>
           <button type="button" class="accessibility-statement-link" data-cookie-settings style="background:none;border:none;padding:0;font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">ניהול עוגיות</button>
           <span aria-hidden="true" style="opacity:0.3;">·</span>
-          <a href="admin.html" class="accessibility-statement-link" style="opacity:0.55;" aria-label="כניסה לפאנל ניהול">ניהול</a>
+          <a href="admin.html" class="accessibility-statement-link">כניסה לניהול</a>
         </div>
       </div>
     </div>

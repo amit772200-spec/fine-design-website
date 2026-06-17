@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://bespoke-raindrop-0633e9.netlify.app/sitemap.xml
+Sitemap: https://finedesignbyamit.com/sitemap.xml

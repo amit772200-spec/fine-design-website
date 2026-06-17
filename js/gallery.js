@@ -17,6 +17,7 @@ function buildCard(inv, basePath) {
     : basePath + 'pages/product.html?id=' + encodeURIComponent(inv.id);
 
   const imgWrap = href ? document.createElement('a') : document.createElement('div');
+  imgWrap.className = 'invitation-img-wrap';
   if (href) {
     imgWrap.href = href;
     imgWrap.setAttribute('aria-label', 'לפרטים והזמנה');
@@ -36,6 +37,11 @@ function buildCard(inv, basePath) {
     placeholder.textContent = categoryLabel(inv.category);
     imgWrap.appendChild(placeholder);
   }
+
+  const wm = document.createElement('div');
+  wm.className = 'wm';
+  wm.setAttribute('aria-hidden', 'true');
+  imgWrap.appendChild(wm);
 
   card.appendChild(imgWrap);
 
@@ -126,9 +132,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     (async () => { try { return await dbLoadAll(); } catch { return []; } })(),
   ]);
 
-  // Merge: DB items override static ones with same id
+  // Merge: DB items override static ones with same id; deleted DB items are hidden
   const dbIds = new Set(dbItems.map(i => i.id));
-  const all = [...staticItems.filter(i => !dbIds.has(i.id)), ...dbItems];
+  const all = [
+    ...staticItems.filter(i => !dbIds.has(i.id)),
+    ...dbItems.filter(i => !i.deleted),
+  ];
+
+  // Apply per-category custom order saved from admin panel
+  try {
+    if (window.SiteSettings) {
+      const settings = await window.SiteSettings.loadAll();
+      const categories = ['weddings','henna','challah','bar-bat-mitzvah','brit-milah','save-the-date'];
+      categories.forEach(cat => {
+        const raw = settings['gallery_order_' + cat];
+        if (!raw) return;
+        const order = JSON.parse(raw);
+        const idIndex = {};
+        order.forEach((id, i) => { idIndex[id] = i; });
+        /* Sort only the items belonging to this category */
+        const catItems = all.filter(i => i.category === cat);
+        catItems.sort((a, b) => (idIndex[a.id] ?? order.length) - (idIndex[b.id] ?? order.length));
+        /* Write sorted items back in-place */
+        let ci = 0;
+        for (let i = 0; i < all.length; i++) {
+          if (all[i].category === cat) all[i] = catItems[ci++];
+        }
+      });
+    }
+  } catch { /* use default order */ }
 
   grids.forEach(grid => {
     const category = grid.dataset.galleryCategory;

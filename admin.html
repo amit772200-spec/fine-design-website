@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html dir="rtl" lang="he-IL">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>ניהול | Fine Design</title>
@@ -58,6 +59,7 @@
       <div class="container">
         <div class="admin-tabs-inner" role="tablist" aria-label="ניווט בניהול">
           <button class="admin-tab active" role="tab" aria-selected="true" data-tab="invitations">ניהול הזמנות</button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="reorder">סדר תצוגה</button>
           <button class="admin-tab" role="tab" aria-selected="false" data-tab="texts">עריכת טקסטים</button>
           <button class="admin-tab" role="tab" aria-selected="false" data-tab="theme">עיצוב וצבעים</button>
         </div>
@@ -79,13 +81,10 @@
                 <label for="admin-category">קטגוריה</label>
                 <select id="admin-category">
                   <option value="weddings">הזמנות לחתונות</option>
-                  <option value="henna">הזמנות לחינה</option>
+                  <option value="henna">הזמנות לחינה ומימונה</option>
                   <option value="challah">הזמנות להפרשת חלה</option>
-                  <option value="birthdays">הזמנות לימי הולדת ילדים</option>
                   <option value="bar-bat-mitzvah">הזמנות לבר / בת מצווה</option>
                   <option value="brit-milah">הזמנות לברית/בריתה</option>
-                  <option value="mimouna">הזמנות למימונה</option>
-                  <option value="menus">תפריטים לאירועים</option>
                   <option value="save-the-date">Save the Date</option>
                 </select>
               </div>
@@ -131,13 +130,10 @@
               <div class="admin-filter" role="group" aria-label="סינון לפי קטגוריה">
                 <button class="admin-filter-btn active" data-filter="all">הכל</button>
                 <button class="admin-filter-btn" data-filter="weddings">חתונות</button>
-                <button class="admin-filter-btn" data-filter="henna">חינה</button>
+                <button class="admin-filter-btn" data-filter="henna">חינה/מימונה</button>
                 <button class="admin-filter-btn" data-filter="challah">הפרשת חלה</button>
-                <button class="admin-filter-btn" data-filter="birthdays">ימי הולדת</button>
                 <button class="admin-filter-btn" data-filter="bar-bat-mitzvah">בר/בת מצווה</button>
-                <button class="admin-filter-btn" data-filter="brit-milah">ברית</button>
-                <button class="admin-filter-btn" data-filter="mimouna">מימונה</button>
-                <button class="admin-filter-btn" data-filter="menus">תפריטים</button>
+                <button class="admin-filter-btn" data-filter="brit-milah">ברית/בריתה</button>
                 <button class="admin-filter-btn" data-filter="save-the-date">Save the Date</button>
               </div>
 
@@ -161,6 +157,30 @@
           <div style="display:flex; gap:12px; flex-wrap:wrap; margin-block-start:24px;">
             <button class="admin-save-btn" id="texts-save-btn" style="flex:1;">שמירת שינויים</button>
             <button class="admin-logout-btn" id="texts-reset-btn">איפוס לברירת מחדל</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB: REORDER ===== -->
+      <section class="admin-tab-panel" id="tab-reorder" role="tabpanel" hidden>
+        <div class="admin-card">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-block-end:16px;">
+            <div>
+              <h2 style="margin:0;">סדר תצוגה</h2>
+              <p style="font-size:0.9rem; color:var(--ink-soft); margin-block-start:6px;">בחרי קטגוריה, גררי הזמנה מעל הזמנה אחרת להחלפת מיקום, לחצי "שמירת הסדר".</p>
+            </div>
+            <button class="admin-save-btn" id="save-order-btn" style="white-space:nowrap;">שמירת הסדר</button>
+          </div>
+          <div class="admin-filter" role="group" aria-label="קטגוריה לסידור">
+            <button class="admin-filter-btn active" data-reorder-cat="weddings">חתונות</button>
+            <button class="admin-filter-btn" data-reorder-cat="henna">חינה/מימונה</button>
+            <button class="admin-filter-btn" data-reorder-cat="challah">הפרשת חלה</button>
+            <button class="admin-filter-btn" data-reorder-cat="bar-bat-mitzvah">בר/בת מצווה</button>
+            <button class="admin-filter-btn" data-reorder-cat="brit-milah">ברית/בריתה</button>
+            <button class="admin-filter-btn" data-reorder-cat="save-the-date">Save the Date</button>
+          </div>
+          <div class="reorder-grid" id="reorder-grid">
+            <div class="admin-empty">בחרי קטגוריה כדי להתחיל</div>
           </div>
         </div>
       </section>

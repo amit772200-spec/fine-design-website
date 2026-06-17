@@ -10,13 +10,10 @@ const ADMIN_PW = 'amit2025';
 
 const CATEGORY_LABELS = {
   weddings:          'חתונות',
-  henna:             'חינה',
+  henna:             'חינה/מימונה',
   challah:           'הפרשת חלה',
-  birthdays:         'ימי הולדת',
   'bar-bat-mitzvah': 'בר/בת מצווה',
-  'brit-milah':      'ברית',
-  mimouna:           'מימונה',
-  menus:             'תפריטים',
+  'brit-milah':      'ברית/בריתה',
   'save-the-date':   'Save the Date',
 };
 
@@ -32,15 +29,19 @@ function showToast(msg) {
    =========================================================== */
 let currentFilter = 'all';
 
+function showAdminPanel() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  renderGrid(currentFilter);
+  buildSettingsForm('texts-form', /\b(hero|categories|about|cta|whatsapp|contact|footer)_/);
+  buildSettingsForm('theme-form', /^theme_/);
+}
+
 function login() {
   const pw = document.getElementById('admin-password').value;
   if (pw === ADMIN_PW) {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('admin-panel').style.display = 'block';
-    renderGrid(currentFilter);
-    /* Lazy-build settings forms */
-    buildSettingsForm('texts-form', /\b(hero|categories|about|cta|whatsapp|contact|footer)_/);
-    buildSettingsForm('theme-form', /^theme_/);
+    sessionStorage.setItem('adminAuth', '1');
+    showAdminPanel();
   } else {
     document.getElementById('login-error').style.display = 'block';
     document.getElementById('admin-password').value = '';
@@ -53,6 +54,7 @@ document.getElementById('admin-password').addEventListener('keydown', e => {
   if (e.key === 'Enter') login();
 });
 document.getElementById('logout-btn').addEventListener('click', () => {
+  sessionStorage.removeItem('adminAuth');
   document.getElementById('admin-panel').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('admin-password').value = '';
@@ -74,6 +76,7 @@ document.querySelectorAll('.admin-tab').forEach(tab => {
       if (match) panel.removeAttribute('hidden');
       else panel.setAttribute('hidden', '');
     });
+    if (target === 'reorder') buildReorderTab();
   });
 });
 
@@ -167,20 +170,44 @@ saveBtn.addEventListener('click', async () => {
   showToast('ההזמנה נוספה בהצלחה!');
 });
 
+async function loadStaticItems() {
+  try {
+    /* admin.html is always at the site root, so no basePath prefix needed */
+    const res = await fetch('./data/gallery.json');
+    if (!res.ok) return [];
+    const items = await res.json();
+    return Array.isArray(items) ? items : [];
+  } catch (err) {
+    console.warn('loadStaticItems failed:', err);
+    return [];
+  }
+}
+
 async function renderGrid(filter) {
   const grid = document.getElementById('admin-grid');
   grid.innerHTML = '<div class="admin-empty">טוען...</div>';
 
-  let all;
+  let dbItems = [];
+  let staticItems = [];
+
   try {
-    all = await dbLoadAll();
+    dbItems = await dbLoadAll();
   } catch (err) {
     grid.innerHTML = '<div class="admin-empty">שגיאה בטעינת ההזמנות.</div>';
     return;
   }
 
-  const items = filter === 'all' ? all : all.filter(i => i.category === filter);
-  document.getElementById('inv-count').textContent = all.length;
+  staticItems = await loadStaticItems();
+
+  // Merge: DB items override static ones with same id
+  const dbIds = new Set(dbItems.map(i => i.id));
+  const allItems = [
+    ...staticItems.filter(i => !dbIds.has(i.id)).map(i => ({ ...i, _static: true })),
+    ...dbItems.filter(i => !i.deleted),
+  ];
+
+  const items = filter === 'all' ? allItems : allItems.filter(i => i.category === filter);
+  document.getElementById('inv-count').textContent = allItems.length;
 
   if (items.length === 0) {
     grid.innerHTML = '<div class="admin-empty">אין הזמנות בקטגוריה זו.</div>';
@@ -200,7 +227,7 @@ async function renderGrid(filter) {
     item.appendChild(badge);
 
     const img = document.createElement('img');
-    img.src = inv.imageData;
+    img.src = inv.imageData || inv.imagePath || '';
     img.alt = 'הזמנה ל' + (CATEGORY_LABELS[inv.category] || '');
     img.loading = 'lazy';
     item.appendChild(img);
@@ -215,7 +242,18 @@ async function renderGrid(filter) {
     priceInput.title = 'מחיר בשקלים';
     priceInput.setAttribute('aria-label', 'מחיר ההזמנה בשקלים');
     priceInput.addEventListener('change', async () => {
-      await dbUpdatePrice(inv.id, priceInput.value);
+      if (inv._static) {
+        /* Promote static item to DB so price change persists */
+        await dbSave({
+          id: inv.id,
+          category: inv.category,
+          price: priceInput.value,
+          imagePath: inv.imagePath,
+          createdAt: new Date().toISOString(),
+        });
+      } else {
+        await dbUpdatePrice(inv.id, priceInput.value);
+      }
       showToast('המחיר עודכן');
     });
 
@@ -226,7 +264,14 @@ async function renderGrid(filter) {
     delBtn.textContent = '×';
     delBtn.addEventListener('click', async () => {
       if (confirm('למחוק הזמנה זו?')) {
-        await dbDelete(inv.id);
+        /* Always save a tombstone so static items (or promoted static items)
+           don't reappear from gallery.json after their DB record is removed */
+        await dbSave({
+          id: inv.id,
+          category: inv.category,
+          deleted: true,
+          createdAt: new Date().toISOString(),
+        });
         await renderGrid(currentFilter);
         showToast('ההזמנה נמחקה');
       }
@@ -340,3 +385,128 @@ document.getElementById('texts-save-btn').addEventListener('click', () => saveSe
 document.getElementById('theme-save-btn').addEventListener('click', () => saveSettingsFromForm('theme-form'));
 document.getElementById('texts-reset-btn').addEventListener('click', () => resetSettingsFromForm('texts-form'));
 document.getElementById('theme-reset-btn').addEventListener('click', () => resetSettingsFromForm('theme-form'));
+
+/* ===========================================================
+   REORDER TAB — per-category drag-and-drop swap
+   =========================================================== */
+let reorderItems = [];
+let currentReorderCat = 'weddings';
+
+async function loadSavedOrder(cat) {
+  try {
+    const settings = await window.SiteSettings.loadAll();
+    const raw = settings['gallery_order_' + cat];
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
+async function buildReorderTab(cat) {
+  cat = cat || currentReorderCat;
+  currentReorderCat = cat;
+
+  const container = document.getElementById('reorder-grid');
+  if (!container) return;
+  container.innerHTML = '<div class="admin-empty">טוען...</div>';
+
+  let dbItems = [];
+  let staticItems = [];
+  try { dbItems = await dbLoadAll(); } catch { /* ignore */ }
+  staticItems = await loadStaticItems();
+
+  const dbIds = new Set(dbItems.map(i => i.id));
+  const allItems = [
+    ...staticItems.filter(i => !dbIds.has(i.id)),
+    ...dbItems.filter(i => !i.deleted),
+  ].filter(i => i.category === cat);
+
+  const savedOrder = await loadSavedOrder(cat);
+  if (savedOrder && savedOrder.length) {
+    const idIndex = {};
+    savedOrder.forEach((id, idx) => { idIndex[id] = idx; });
+    allItems.sort((a, b) => (idIndex[a.id] ?? savedOrder.length) - (idIndex[b.id] ?? savedOrder.length));
+  }
+
+  reorderItems = allItems;
+  renderReorderGrid(container);
+}
+
+function renderReorderGrid(container) {
+  container.innerHTML = '';
+  if (!reorderItems.length) {
+    container.innerHTML = '<div class="admin-empty">אין הזמנות בקטגוריה זו.</div>';
+    return;
+  }
+  let dragSrcIdx = null;
+
+  reorderItems.forEach((inv, index) => {
+    const card = document.createElement('div');
+    card.className = 'reorder-card';
+    card.draggable = true;
+
+    const img = document.createElement('img');
+    img.src = inv.imageData || inv.imagePath || '';
+    img.alt = CATEGORY_LABELS[inv.category] || inv.category;
+    img.loading = 'lazy';
+
+    const pos = document.createElement('span');
+    pos.className = 'reorder-pos';
+    pos.textContent = index + 1;
+
+    card.appendChild(img);
+    card.appendChild(pos);
+
+    card.addEventListener('dragstart', e => {
+      dragSrcIdx = index;
+      card.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+      container.querySelectorAll('.reorder-card').forEach(c => c.classList.remove('drag-over'));
+    });
+
+    card.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      container.querySelectorAll('.reorder-card').forEach(c => c.classList.remove('drag-over'));
+      card.classList.add('drag-over');
+    });
+
+    card.addEventListener('dragleave', () => card.classList.remove('drag-over'));
+
+    card.addEventListener('drop', e => {
+      e.preventDefault();
+      card.classList.remove('drag-over');
+      if (dragSrcIdx === null || dragSrcIdx === index) return;
+      const tmp = reorderItems[dragSrcIdx];
+      reorderItems[dragSrcIdx] = reorderItems[index];
+      reorderItems[index] = tmp;
+      dragSrcIdx = null;
+      renderReorderGrid(container);
+    });
+
+    container.appendChild(card);
+  });
+}
+
+/* Category filter buttons inside the reorder tab */
+document.querySelectorAll('[data-reorder-cat]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-reorder-cat]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildReorderTab(btn.dataset.reorderCat);
+  });
+});
+
+document.getElementById('save-order-btn').addEventListener('click', async () => {
+  if (!reorderItems.length) { showToast('אין הזמנות לשמור'); return; }
+  const ids = reorderItems.map(i => i.id);
+  await window.SiteSettings.save('gallery_order_' + currentReorderCat, JSON.stringify(ids));
+  showToast('הסדר נשמר! רענן את דף הקטגוריה כדי לראות את השינוי.');
+});
+
+/* Auto-login if session is still active (survives page refresh, clears on tab close) */
+if (sessionStorage.getItem('adminAuth') === '1') {
+  showAdminPanel();
+}

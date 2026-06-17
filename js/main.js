@@ -135,43 +135,109 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 })();
 
 /* =========================================================
-   WHATSAPP CAROUSEL
+   HERO IMAGE STRIP — clone images for seamless vertical loop
    ========================================================= */
-(function initWaCarousel() {
-  const track = document.getElementById('wa-track');
+(function initHeroStrip() {
+  const track = document.getElementById('hero-img-track');
   if (!track) return;
+  const imgs = Array.from(track.querySelectorAll('.hero-img-item'));
+  imgs.forEach(img => track.appendChild(img.cloneNode(true)));
+})();
 
-  const slides = track.querySelectorAll('.wa-slide');
-  const dots   = document.querySelectorAll('.wa-dot');
-  let current  = 0;
-  let timer;
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
+(function initBackToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'חזרה לראש הדף');
+  btn.innerHTML = '&#8679;';
+  document.body.appendChild(btn);
 
-  function goTo(idx) {
-    current = (idx + slides.length) % slides.length;
-    track.style.transform = 'translateX(' + (current * 100) + '%)';
-    dots.forEach((d, i) => {
-      d.classList.toggle('wa-dot--active', i === current);
-      d.setAttribute('aria-selected', String(i === current));
-    });
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('is-visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+/* =========================================================
+   LIGHTBOX
+   ========================================================= */
+(function initLightbox() {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'תצוגת תמונה מוגדלת');
+  overlay.hidden = true;
+  overlay.innerHTML = `
+    <div class="lightbox-inner">
+      <button class="lightbox-close" aria-label="סגור">&#215;</button>
+      <img class="lightbox-img" src="" alt="">
+    </div>
+    <button class="lightbox-prev" aria-label="הקודם">&#8250;</button>
+    <button class="lightbox-next" aria-label="הבא">&#8249;</button>
+  `;
+  document.body.appendChild(overlay);
+
+  let items = [];
+  let current = 0;
+
+  function getItems() {
+    return Array.from(document.querySelectorAll('.invitation-card .invitation-img-wrap img:not([aria-hidden])'));
   }
 
-  document.getElementById('wa-next') &&
-    document.getElementById('wa-next').addEventListener('click', () => { clearInterval(timer); goTo(current - 1); startAuto(); });
-  document.getElementById('wa-prev') &&
-    document.getElementById('wa-prev').addEventListener('click', () => { clearInterval(timer); goTo(current + 1); startAuto(); });
-
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { clearInterval(timer); goTo(i); startAuto(); }));
-
-  function startAuto() {
-    timer = setInterval(() => goTo(current + 1), 4500);
+  function openLightbox(index) {
+    items = getItems();
+    current = index;
+    show();
+    overlay.hidden = false;
+    requestAnimationFrame(() => overlay.classList.add('is-open'));
+    document.body.style.overflow = 'hidden';
+    overlay.querySelector('.lightbox-close').focus();
   }
 
-  /* RTL: slides stack right-to-left, positive translateX moves right */
-  track.style.display = 'flex';
-  track.style.transition = 'transform 0.4s ease';
-  slides.forEach(s => { s.style.minWidth = '100%'; });
+  function closeLightbox() {
+    overlay.classList.remove('is-open');
+    overlay.addEventListener('transitionend', () => { overlay.hidden = true; }, { once: true });
+    document.body.style.overflow = '';
+  }
 
-  startAuto();
+  function show() {
+    const img = items[current];
+    if (!img) return;
+    const lb = overlay.querySelector('.lightbox-img');
+    lb.src = img.src;
+    lb.alt = img.alt || '';
+  }
+
+  function prev() { current = (current - 1 + items.length) % items.length; show(); }
+  function next() { current = (current + 1) % items.length; show(); }
+
+  overlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  overlay.querySelector('.lightbox-prev').addEventListener('click', prev);
+  overlay.querySelector('.lightbox-next').addEventListener('click', next);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeLightbox(); });
+
+  document.addEventListener('keydown', e => {
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') prev();
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   next();
+  });
+
+  document.addEventListener('click', e => {
+    const wrap = e.target.closest('.invitation-card .invitation-img-wrap');
+    if (!wrap) return;
+    const img = wrap.querySelector('img');
+    if (!img) return;
+    items = getItems();
+    const idx = items.indexOf(img);
+    openLightbox(idx >= 0 ? idx : 0);
+  });
 })();
 
 /* =========================================================
@@ -306,6 +372,127 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     } catch {
       btn.disabled = false;
       btn.textContent = 'שליחה';
+      alert('שגיאה בשליחה. אנא נסו שוב מאוחר יותר.');
+    }
+  });
+})();
+
+/* =========================================================
+   REVIEW MODAL — customers submit a review for approval
+   ========================================================= */
+(function injectReviewModal() {
+  const modal = document.createElement('div');
+  modal.id = 'review-modal';
+  modal.className = 'modal-overlay';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'review-modal-heading');
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="modal-box">
+      <button class="modal-close" aria-label="סגור">&#215;</button>
+      <h2 id="review-modal-heading">כתבו לנו ביקורת</h2>
+      <p>נשמח לשמוע איך היה! הביקורת תפורסם באתר לאחר אישור.</p>
+      <form id="review-modal-form" class="modal-form" novalidate>
+        <input type="hidden" name="_subject" value="ביקורת חדשה מהאתר">
+        <div class="modal-form-group">
+          <label>דירוג</label>
+          <div class="star-rating-input" role="radiogroup" aria-label="דירוג בכוכבים">
+            <button type="button" data-value="5" aria-label="5 כוכבים">★</button>
+            <button type="button" data-value="4" aria-label="4 כוכבים">★</button>
+            <button type="button" data-value="3" aria-label="3 כוכבים">★</button>
+            <button type="button" data-value="2" aria-label="2 כוכבים">★</button>
+            <button type="button" data-value="1" aria-label="כוכב אחד">★</button>
+          </div>
+          <input type="hidden" id="review-rating" name="דירוג" value="5" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="review-name">שם *</label>
+          <input type="text" id="review-name" name="שם" required placeholder="השם שלך">
+        </div>
+        <div class="modal-form-group">
+          <label for="review-event">סוג האירוע *</label>
+          <input type="text" id="review-event" name="סוג האירוע" required placeholder="חתונה, חינה, בר מצווה...">
+        </div>
+        <div class="modal-form-group">
+          <label for="review-text">הביקורת שלך *</label>
+          <textarea id="review-text" name="תוכן הביקורת" rows="4" required placeholder="ספרו לנו על החוויה שלכם..."></textarea>
+        </div>
+        <button type="submit" class="modal-submit-btn">שליחת ביקורת</button>
+      </form>
+      <div id="review-modal-success" class="modal-success" hidden>
+        <p>תודה רבה! קיבלנו את הביקורת שלך ונפרסם אותה בקרוב.</p>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const stars = Array.from(modal.querySelectorAll('.star-rating-input button'));
+  const ratingInput = modal.querySelector('#review-rating');
+
+  function setRating(value) {
+    ratingInput.value = value;
+    stars.forEach(star => {
+      star.classList.toggle('is-filled', Number(star.dataset.value) >= Number(value));
+    });
+  }
+  stars.forEach(star => {
+    star.addEventListener('click', () => setRating(star.dataset.value));
+  });
+
+  function openModal() {
+    const form = document.getElementById('review-modal-form');
+    const success = document.getElementById('review-modal-success');
+    const btn = form.querySelector('.modal-submit-btn');
+    form.hidden = false;
+    form.reset();
+    setRating(5);
+    success.hidden = true;
+    btn.disabled = false;
+    btn.textContent = 'שליחת ביקורת';
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.modal-close').focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('open-review-modal')) return;
+    openModal();
+  });
+
+  modal.querySelector('.modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+  document.getElementById('review-modal-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.modal-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'שולח...';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/finedesign772200@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        form.hidden = true;
+        document.getElementById('review-modal-success').hidden = false;
+        setTimeout(closeModal, 3500);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'שליחת ביקורת';
+        alert('שגיאה בשליחה. אנא נסו שוב מאוחר יותר.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'שליחת ביקורת';
       alert('שגיאה בשליחה. אנא נסו שוב מאוחר יותר.');
     }
   });

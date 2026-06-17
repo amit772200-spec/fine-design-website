@@ -9,7 +9,10 @@
       "WebFetch(domain:invitations.co.il)",
       "Bash(node -e ' *)",
       "Bash(npx serve *)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(powershell -Command \"\\(Get-Content -Raw index.html\\) -replace 'works-strip-img\\\\\" alt=\\\\\"\\\\\" loading=\\\\\"lazy\\\\\">', 'works-strip-img\\\\\" alt=\\\\\"\\\\\">' | Set-Content -NoNewline -Encoding UTF8 index.html\")",
+      "Bash(powershell -Command \"\\(Get-Content -Raw index.html\\) -replace 'hero-img-item\\\\\" alt=\\\\\"\\\\\" loading=\\\\\"lazy\\\\\">', 'hero-img-item\\\\\" alt=\\\\\"\\\\\">' | Set-Content -NoNewline -Encoding UTF8 index.html\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:3000/images/gallery/weddings/017.png\")"
     ]
   }
 }
