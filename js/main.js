@@ -411,6 +411,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           <input type="text" id="review-name" name="שם" required placeholder="השם שלך">
         </div>
         <div class="modal-form-group">
+          <label for="review-email">כתובת מייל *</label>
+          <input type="email" id="review-email" name="מייל" required autocomplete="email" placeholder="example@mail.com">
+        </div>
+        <div class="modal-form-group">
           <label for="review-event">סוג האירוע *</label>
           <input type="text" id="review-event" name="סוג האירוע" required placeholder="חתונה, חינה, בר מצווה...">
         </div>
