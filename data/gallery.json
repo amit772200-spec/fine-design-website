@@ -474,12 +474,6 @@
     "imagePath": "images/gallery/henna/037.jpg"
   },
   {
-    "id": "static-0112",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/038.png"
-  },
-  {
     "id": "static-0113",
     "category": "henna",
     "price": 97,
@@ -676,12 +670,6 @@
     "category": "henna",
     "price": 97,
     "imagePath": "images/gallery/henna/025.jpg"
-  },
-  {
-    "id": "static-0068",
-    "category": "henna",
-    "price": 97,
-    "imagePath": "images/gallery/henna/026.jpg"
   },
   {
     "id": "static-0069",
