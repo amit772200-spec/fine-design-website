@@ -1140,6 +1140,19 @@ p {
   }
 }
 
+@media (max-width: 899px) {
+  .about-text {
+    align-items: center;
+    text-align: center;
+  }
+  .about-text p {
+    max-width: none;
+  }
+  .about-text .hero-actions {
+    justify-content: center;
+  }
+}
+
 .about-image-placeholder {
   position: relative;
   width: 100%;
