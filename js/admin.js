@@ -77,6 +77,9 @@ document.querySelectorAll('.admin-tab').forEach(tab => {
       else panel.setAttribute('hidden', '');
     });
     if (target === 'reorder') buildReorderTab();
+    if (target === 'leads') { renderDashboardStats(); renderLeads(); }
+    if (target === 'invoices') renderInvoices();
+    if (target === 'reviews') renderReviews();
   });
 });
 

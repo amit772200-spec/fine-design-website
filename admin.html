@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@400;600&family=Rubik:wght@400;500&family=Noto+Serif+Hebrew:wght@400;700&family=David+Libre:wght@400;700&family=Suez+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/accessibility.css">
+  <link rel="stylesheet" href="css/crm.css">
 </head>
 <body class="admin-body">
 
@@ -59,6 +60,9 @@
       <div class="container">
         <div class="admin-tabs-inner" role="tablist" aria-label="ניווט בניהול">
           <button class="admin-tab active" role="tab" aria-selected="true" data-tab="invitations">ניהול הזמנות</button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="leads">לידים ולקוחות</button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="invoices">חשבוניות</button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="reviews">ביקורות</button>
           <button class="admin-tab" role="tab" aria-selected="false" data-tab="reorder">סדר תצוגה</button>
           <button class="admin-tab" role="tab" aria-selected="false" data-tab="texts">עריכת טקסטים</button>
           <button class="admin-tab" role="tab" aria-selected="false" data-tab="theme">עיצוב וצבעים</button>
@@ -161,6 +165,104 @@
         </div>
       </section>
 
+      <!-- ===== TAB: LEADS ===== -->
+      <section class="admin-tab-panel" id="tab-leads" role="tabpanel" hidden>
+
+        <div id="stat-cards" class="stat-cards" style="margin-block-end:24px;"></div>
+
+        <div class="admin-card">
+          <div class="crm-table-header">
+            <h2>ניהול לקוחות <span id="leads-count" class="count-badge"></span></h2>
+            <button class="admin-save-btn crm-add-btn" id="add-lead-btn">+ הוספת ליד</button>
+          </div>
+
+          <div class="admin-filter" role="group" aria-label="סינון לפי סטטוס">
+            <button class="admin-filter-btn active" data-lead-filter="all">הכל</button>
+            <button class="admin-filter-btn" data-lead-filter="new">ליד חדש</button>
+            <button class="admin-filter-btn" data-lead-filter="in-progress">בטיפול</button>
+            <button class="admin-filter-btn" data-lead-filter="working">בביצוע</button>
+            <button class="admin-filter-btn" data-lead-filter="sent">נשלחה</button>
+          </div>
+
+          <div class="crm-table-wrap">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>שם</th>
+                  <th>טלפון</th>
+                  <th>סוג אירוע</th>
+                  <th>תאריך</th>
+                  <th>סטטוס</th>
+                  <th>פעולות</th>
+                </tr>
+              </thead>
+              <tbody id="leads-tbody"></tbody>
+            </table>
+            <div class="admin-empty" id="leads-empty" hidden>אין לידים. לחצי על "הוספת ליד" כדי להתחיל.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB: INVOICES ===== -->
+      <section class="admin-tab-panel" id="tab-invoices" role="tabpanel" hidden>
+        <div class="admin-card">
+          <div class="crm-table-header">
+            <h2>חשבוניות <span id="invoices-count" class="count-badge"></span></h2>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <button class="admin-logout-btn" id="print-invoices-btn">הדפסה</button>
+              <button class="admin-save-btn crm-add-btn" id="add-invoice-btn">+ הוספת חשבונית</button>
+            </div>
+          </div>
+
+          <div class="crm-table-wrap">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>לקוח</th>
+                  <th>סוג עבודה</th>
+                  <th>סכום</th>
+                  <th>תאריך</th>
+                  <th>תשלום</th>
+                  <th>פעולות</th>
+                </tr>
+              </thead>
+              <tbody id="invoices-tbody"></tbody>
+            </table>
+            <div class="admin-empty" id="invoices-empty" hidden>אין חשבוניות עדיין.</div>
+          </div>
+
+          <div id="invoice-summary" class="invoice-summary"></div>
+        </div>
+      </section>
+
+      <!-- ===== TAB: REVIEWS ===== -->
+      <section class="admin-tab-panel" id="tab-reviews" role="tabpanel" hidden>
+        <div class="admin-card">
+          <div class="crm-table-header">
+            <h2>ביקורות שהתפרסמו באתר <span id="reviews-count" class="count-badge"></span></h2>
+          </div>
+
+          <div class="crm-table-wrap">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>תאריך</th>
+                  <th>שם</th>
+                  <th>מייל</th>
+                  <th>אירוע</th>
+                  <th>דירוג</th>
+                  <th>תוכן</th>
+                  <th>פעולות</th>
+                </tr>
+              </thead>
+              <tbody id="reviews-tbody"></tbody>
+            </table>
+            <div class="admin-empty" id="reviews-empty" hidden>אין ביקורות עדיין.</div>
+          </div>
+        </div>
+      </section>
+
       <!-- ===== TAB: REORDER ===== -->
       <section class="admin-tab-panel" id="tab-reorder" role="tabpanel" hidden>
         <div class="admin-card">
@@ -203,12 +305,132 @@
     </main>
   </div>
 
+  <!-- ===== LEAD MODAL ===== -->
+  <div class="crm-modal-overlay" id="lead-modal" hidden role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+    <div class="crm-modal">
+      <button class="modal-close-btn" id="lead-modal-close" aria-label="סגור">&#215;</button>
+      <h2 id="lead-modal-title">הוספת ליד חדש</h2>
+      <form id="lead-form" novalidate>
+        <input type="hidden" id="lead-id">
+        <div class="crm-form-row">
+          <div class="admin-form-group">
+            <label for="lead-name">שם מלא *</label>
+            <input type="text" id="lead-name" required placeholder="שם פרטי ומשפחה" autocomplete="name">
+          </div>
+          <div class="admin-form-group">
+            <label for="lead-phone">טלפון *</label>
+            <input type="tel" id="lead-phone" required placeholder="05X-XXXXXXX" dir="ltr" autocomplete="tel">
+          </div>
+        </div>
+        <div class="crm-form-row" style="margin-block-start:16px;">
+          <div class="admin-form-group">
+            <label for="lead-email">מייל</label>
+            <input type="email" id="lead-email" placeholder="example@mail.com" dir="ltr" autocomplete="email">
+          </div>
+          <div class="admin-form-group">
+            <label for="lead-event-type">סוג אירוע</label>
+            <select id="lead-event-type">
+              <option value="">בחרי...</option>
+              <option>חתונה</option>
+              <option>חינה</option>
+              <option>מימונה</option>
+              <option>ברית</option>
+              <option>בת מצווה</option>
+              <option>בר מצווה</option>
+              <option>יום הולדת</option>
+              <option>הפרשת חלה</option>
+              <option>Save the Date</option>
+              <option>אחר</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-form-group" style="margin-block-start:16px;">
+          <label for="lead-status">סטטוס</label>
+          <select id="lead-status">
+            <option value="new">ליד חדש - צריך להתקשר</option>
+            <option value="in-progress">בטיפול - שיחה התקיימה</option>
+            <option value="working">הזמנה בביצוע</option>
+            <option value="sent">הזמנה נשלחה ללקוח</option>
+          </select>
+        </div>
+        <div class="admin-form-group" style="margin-block-start:16px;">
+          <label for="lead-notes">הערות</label>
+          <textarea id="lead-notes" rows="3" placeholder="פרטים נוספים, העדפות, מועד האירוע..."></textarea>
+        </div>
+        <div style="display:flex; gap:12px; margin-block-start:24px;">
+          <button type="submit" class="admin-save-btn" style="flex:1;">שמירה</button>
+          <button type="button" class="admin-logout-btn" id="lead-modal-cancel">ביטול</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== INVOICE MODAL ===== -->
+  <div class="crm-modal-overlay" id="invoice-modal" hidden role="dialog" aria-modal="true" aria-labelledby="invoice-modal-title">
+    <div class="crm-modal">
+      <button class="modal-close-btn" id="invoice-modal-close" aria-label="סגור">&#215;</button>
+      <h2 id="invoice-modal-title">הוספת חשבונית</h2>
+      <form id="invoice-form" novalidate>
+        <input type="hidden" id="invoice-id">
+        <div class="crm-form-row">
+          <div class="admin-form-group">
+            <label for="invoice-client">שם לקוח *</label>
+            <input type="text" id="invoice-client" required placeholder="שם מלא" autocomplete="name">
+          </div>
+          <div class="admin-form-group">
+            <label for="invoice-event-type">סוג עבודה</label>
+            <select id="invoice-event-type">
+              <option value="">בחרי...</option>
+              <option>חתונה</option>
+              <option>חינה</option>
+              <option>מימונה</option>
+              <option>ברית</option>
+              <option>בת מצווה</option>
+              <option>בר מצווה</option>
+              <option>יום הולדת</option>
+              <option>הפרשת חלה</option>
+              <option>Save the Date</option>
+              <option>אחר</option>
+            </select>
+          </div>
+        </div>
+        <div class="crm-form-row" style="margin-block-start:16px;">
+          <div class="admin-form-group">
+            <label for="invoice-amount">סכום (&#8362;) *</label>
+            <input type="number" id="invoice-amount" required min="0" step="1" placeholder="500" dir="ltr">
+          </div>
+          <div class="admin-form-group">
+            <label for="invoice-date">תאריך</label>
+            <input type="date" id="invoice-date" dir="ltr">
+          </div>
+        </div>
+        <div class="admin-form-group" style="margin-block-start:16px;">
+          <label for="invoice-paid">סטטוס תשלום</label>
+          <select id="invoice-paid">
+            <option value="false">לא שולם</option>
+            <option value="true">שולם</option>
+          </select>
+        </div>
+        <div class="admin-form-group" style="margin-block-start:16px;">
+          <label for="invoice-notes">הערות</label>
+          <textarea id="invoice-notes" rows="2" placeholder="הערות נוספות..."></textarea>
+        </div>
+        <div style="display:flex; gap:12px; margin-block-start:24px;">
+          <button type="submit" class="admin-save-btn" style="flex:1;">שמירה</button>
+          <button type="button" class="admin-logout-btn" id="invoice-modal-cancel">ביטול</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Toast notification -->
   <div class="admin-success-toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="js/accessibility.js"></script>
   <script src="js/db.js"></script>
   <script src="js/site-settings.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/crm.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

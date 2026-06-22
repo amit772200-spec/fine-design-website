@@ -496,55 +496,13 @@
           </span>
         </div>
 
-        <div class="testimonials-grid">
-
-          <article class="testimonial-card">
-            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <p class="testimonial-quote">
-              עמית הקשיבה לכל פרט קטן, והתוצאה עברה את כל הציפיות שלנו.
-              ההזמנה הייתה הכי יפה שראיתי, ובאמת הרגשנו שזה אנחנו.
-            </p>
-            <div class="testimonial-meta">
-              <strong class="testimonial-author">מיכל ואביב</strong>
-              <span class="testimonial-event">חתונה</span>
-            </div>
-          </article>
-
-          <article class="testimonial-card">
-            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <p class="testimonial-quote">
-              ההזמנה לחינה שלי הייתה הכי יפה שראיתי. כולן שאלו מי עיצבה.
-              שירות מהיר, מדויק ומקסים — מומלץ בחום.
-            </p>
-            <div class="testimonial-meta">
-              <strong class="testimonial-author">מאיה כ.</strong>
-              <span class="testimonial-event">חינה</span>
-            </div>
-          </article>
-
-          <article class="testimonial-card">
-            <div class="testimonial-stars" aria-label="דירוג 5 כוכבים">
-              <span aria-hidden="true">★★★★★</span>
-            </div>
-            <p class="testimonial-quote">
-              הזמנתי עיצוב לבר מצווה של הבן שלי, ולא יכולתי להיות מרוצה יותר.
-              עמית עבדה מהר, באהבה ובדיוק לפרטים הכי קטנים.
-            </p>
-            <div class="testimonial-meta">
-              <strong class="testimonial-author">דינה ש.</strong>
-              <span class="testimonial-event">בר מצווה</span>
-            </div>
-          </article>
-
+        <div class="testimonials-grid" id="testimonials-grid">
+          <p class="testimonials-loading">טוען ביקורות...</p>
         </div>
 
-        <div class="testimonials-total" aria-label="סה״כ דירוגים">
+        <div class="testimonials-total" id="testimonials-total" aria-label="סה״כ דירוגים" hidden>
           <span class="testimonials-total-stars" aria-hidden="true">★★★★★</span>
-          <span>5.0 · מאות לקוחות מרוצים</span>
+          <span id="testimonials-total-text"></span>
         </div>
 
         <div class="testimonials-cta">
@@ -762,6 +720,7 @@
   <script src="js/db.js"></script>
   <script src="js/site-settings.js"></script>
   <script src="js/gallery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/accessibility.js"></script>
   <script src="js/cookie-banner.js"></script>

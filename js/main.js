@@ -378,7 +378,65 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 })();
 
 /* =========================================================
-   REVIEW MODAL — customers submit a review for approval
+   REVIEWS — public submission + live display from Supabase
+   ========================================================= */
+const REVIEWS_SUPABASE_URL = 'https://wnuwujogewzyrjfpzrvq.supabase.co';
+const REVIEWS_SUPABASE_ANON_KEY = 'sb_publishable_0Gef7DeLpbVIBWLYhThTiw_7tozXjyw';
+
+const reviewsSb = (typeof supabase !== 'undefined')
+  ? supabase.createClient(REVIEWS_SUPABASE_URL, REVIEWS_SUPABASE_ANON_KEY)
+  : null;
+
+function renderStars(rating) {
+  return '★★★★★'.slice(0, rating) + '☆☆☆☆☆'.slice(0, 5 - rating);
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+async function loadAndRenderReviews() {
+  const grid = document.getElementById('testimonials-grid');
+  const totalWrap = document.getElementById('testimonials-total');
+  const totalText = document.getElementById('testimonials-total-text');
+  if (!grid || !reviewsSb) return;
+
+  const { data, error } = await reviewsSb
+    .from('reviews')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error || !data || !data.length) {
+    grid.innerHTML = '';
+    return;
+  }
+
+  grid.innerHTML = data.map(r => `
+    <article class="testimonial-card">
+      <div class="testimonial-stars" aria-label="דירוג ${r.rating} כוכבים">
+        <span aria-hidden="true">${renderStars(r.rating)}</span>
+      </div>
+      <p class="testimonial-quote">${escapeHtml(r.review_text)}</p>
+      <div class="testimonial-meta">
+        <strong class="testimonial-author">${escapeHtml(r.name)}</strong>
+        ${r.event_type ? `<span class="testimonial-event">${escapeHtml(r.event_type)}</span>` : ''}
+      </div>
+    </article>
+  `).join('');
+
+  const avg = data.reduce((sum, r) => sum + r.rating, 0) / data.length;
+  if (totalWrap && totalText) {
+    totalText.textContent = `${avg.toFixed(1)} · ${data.length} ביקורות`;
+    totalWrap.hidden = false;
+  }
+}
+
+loadAndRenderReviews();
+
+/* =========================================================
+   REVIEW MODAL — customers submit a review, published live
    ========================================================= */
 (function injectReviewModal() {
   const modal = document.createElement('div');
@@ -392,7 +450,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     <div class="modal-box">
       <button class="modal-close" aria-label="סגור">&#215;</button>
       <h2 id="review-modal-heading">כתבו לנו ביקורת</h2>
-      <p>נשמח לשמוע איך היה! הביקורת תפורסם באתר לאחר אישור.</p>
+      <p>נשמח לשמוע איך היה! הביקורת תפורסם באתר באופן מיידי.</p>
       <form id="review-modal-form" class="modal-form" novalidate>
         <input type="hidden" name="_subject" value="ביקורת חדשה מהאתר">
         <div class="modal-form-group">
@@ -425,7 +483,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         <button type="submit" class="modal-submit-btn">שליחת ביקורת</button>
       </form>
       <div id="review-modal-success" class="modal-success" hidden>
-        <p>תודה רבה! קיבלנו את הביקורת שלך ונפרסם אותה בקרוב.</p>
+        <p>תודה רבה! הביקורת שלך פורסמה באתר.</p>
       </div>
     </div>
   `;
@@ -479,21 +537,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const btn = form.querySelector('.modal-submit-btn');
     btn.disabled = true;
     btn.textContent = 'שולח...';
+
+    const reviewRow = {
+      name: form.querySelector('#review-name').value,
+      email: form.querySelector('#review-email').value,
+      event_type: form.querySelector('#review-event').value,
+      rating: Number(ratingInput.value),
+      review_text: form.querySelector('#review-text').value,
+    };
+
     try {
-      const res = await fetch('https://formsubmit.co/ajax/finedesign772200@gmail.com', {
+      if (reviewsSb) {
+        const { error } = await reviewsSb.from('reviews').insert(reviewRow);
+        if (error) throw error;
+      }
+      /* Email notification is best-effort — the review is already published either way */
+      fetch('https://formsubmit.co/ajax/finedesign772200@gmail.com', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: new FormData(form)
-      });
-      if (res.ok) {
-        form.hidden = true;
-        document.getElementById('review-modal-success').hidden = false;
-        setTimeout(closeModal, 3500);
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'שליחת ביקורת';
-        alert('שגיאה בשליחה. אנא נסו שוב מאוחר יותר.');
-      }
+      }).catch(() => {});
+
+      form.hidden = true;
+      document.getElementById('review-modal-success').hidden = false;
+      loadAndRenderReviews();
+      setTimeout(closeModal, 3500);
     } catch {
       btn.disabled = false;
       btn.textContent = 'שליחת ביקורת';
